@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>英単語テスト（1〜50 house まで）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    background: #f5f7fa;
+    color: #2d3748;
+    line-height: 1.6;
+  }
+  .container { max-width: 560px; margin: 0 auto; padding: 16px; min-height: 100%; }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+  }
+  h1 { font-size: 22px; color: #e8590c; margin-bottom: 8px; }
+  h2 { font-size: 18px; margin-bottom: 12px; }
+  .sub { color: #718096; font-size: 14px; margin-bottom: 16px; }
+  .rule-list { font-size: 14px; color: #4a5568; padding-left: 20px; margin-bottom: 20px; }
+  .rule-list li { margin-bottom: 6px; }
+  input[type="text"] {
+    width: 100%;
+    font-size: 18px;
+    padding: 12px 14px;
+    border: 2px solid #cbd5e0;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    outline: none;
+  }
+  input[type="text"]:focus { border-color: #e8590c; }
+  .btn {
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+  }
+  .btn-primary { background: #e8590c; color: #fff; }
+  .btn-primary:active { background: #c44a08; }
+  .btn-line { background: #06c755; color: #fff; margin-top: 10px; }
+  .btn-gray { background: #e2e8f0; color: #2d3748; margin-top: 10px; }
+  .btn:disabled { background: #cbd5e0; color: #fff; cursor: default; }
+
+  /* テスト画面 */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .qcount { font-size: 15px; font-weight: bold; color: #4a5568; }
+  .timer {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2d3748;
+    background: #fff;
+    border-radius: 10px;
+    padding: 4px 14px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    font-variant-numeric: tabular-nums;
+  }
+  .timer.warn { color: #e53e3e; }
+  .progress-track {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .progress-fill { height: 100%; background: #e8590c; border-radius: 4px; width: 0%; transition: width 0.2s; }
+  .sentence { font-size: 20px; font-weight: bold; margin-bottom: 8px; word-break: break-word; }
+  .blank { color: #e8590c; letter-spacing: 1px; }
+  .ja { font-size: 15px; color: #718096; margin-bottom: 20px; }
+  .choices { display: grid; gap: 10px; }
+  .choice {
+    font-size: 18px;
+    padding: 14px 16px;
+    border: 2px solid #cbd5e0;
+    border-radius: 12px;
+    background: #fff;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+  }
+  .choice.selected {
+    border-color: #e8590c;
+    background: #fff4ec;
+    font-weight: bold;
+  }
+  .nav { display: flex; gap: 10px; margin-top: 20px; }
+  .nav .btn { font-size: 16px; padding: 14px; }
+  .nav .btn-back { background: #e2e8f0; color: #2d3748; margin-top: 0; }
+  .unanswered-note { font-size: 13px; color: #e53e3e; margin-top: 10px; text-align: center; }
+
+  /* 結果画面 */
+  .score-big { font-size: 52px; font-weight: bold; color: #e8590c; text-align: center; }
+  .score-detail { text-align: center; color: #4a5568; font-size: 16px; margin-bottom: 16px; }
+  .review-item {
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  .review-item.ok { background: #f0fff4; border: 1px solid #9ae6b4; }
+  .review-item.ng { background: #fff5f5; border: 1px solid #feb2b2; }
+  .review-item .en { font-weight: bold; font-size: 15px; }
+  .review-item .mark { font-weight: bold; margin-right: 6px; }
+  .review-item.ok .mark { color: #38a169; }
+  .review-item.ng .mark { color: #e53e3e; }
+  .review-item .ans-line { margin-top: 4px; }
+  .review-item .correct-w { color: #38a169; font-weight: bold; }
+  .review-item .wrong-w { color: #e53e3e; text-decoration: line-through; }
+  .copied-msg { text-align: center; color: #38a169; font-size: 14px; margin-top: 8px; min-height: 20px; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- スタート画面 -->
+  <div id="screen-start">
+    <div class="card">
+      <h1>英単語テスト</h1>
+      <div class="sub">範囲：1〜50番（people 〜 house）／ 全50問・4択</div>
+      <ul class="rule-list">
+        <li>文に当てはまる英単語を4つの中から選んでね</li>
+        <li><b>制限時間は30分</b>。時間になると自動的に終了します</li>
+        <li>答え合わせは全部解き終わってから表示されます</li>
+        <li>終わったら「結果をLINEで送る」ボタンで先生に結果を送ってね</li>
+        <li>何度でも挑戦できます（問題の順番は毎回変わります）</li>
+      </ul>
+      <input type="text" id="student-name" placeholder="名前を入力してね" autocomplete="off">
+      <button class="btn btn-primary" id="btn-start">テストを始める</button>
+    </div>
+  </div>
+
+  <!-- テスト画面 -->
+  <div id="screen-quiz" class="hidden">
+    <div class="topbar">
+      <div class="qcount" id="qcount">第1問 / 50</div>
+      <div class="timer" id="timer">30:00</div>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress"></div></div>
+    <div class="card">
+      <div class="sentence" id="sentence"></div>
+      <div class="ja" id="ja"></div>
+      <div class="choices" id="choices"></div>
+      <div class="nav">
+        <button class="btn btn-back" id="btn-back">← 前へ</button>
+        <button class="btn btn-primary" id="btn-next">次へ →</button>
+      </div>
+      <div class="unanswered-note" id="unanswered-note"></div>
+    </div>
+  </div>
+
+  <!-- 結果画面 -->
+  <div id="screen-result" class="hidden">
+    <div class="card">
+      <h2 id="result-title">テスト結果</h2>
+      <div class="score-big" id="score-pct"></div>
+      <div class="score-detail" id="score-detail"></div>
+      <a class="btn btn-line" id="btn-line" target="_blank" rel="noopener">結果をLINEで送る</a>
+      <button class="btn btn-gray" id="btn-copy">結果をコピーする</button>
+      <div class="copied-msg" id="copied-msg"></div>
+      <button class="btn btn-primary" id="btn-retry" style="margin-top:10px;">もう一度挑戦する</button>
+    </div>
+    <div class="card">
+      <h2>答え合わせ</h2>
+      <div id="review"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const TIME_LIMIT_MIN = 30;
+
+// 問題データ（s: 英文 / ja: 日本語訳 / a: 正解 / d: 誤答の選択肢）
+const QUESTIONS = [
+  { s: "Many ___ visit the park.", ja: "多くの人々がその公園を訪れます。", a: "people", d: ["students", "teachers", "players"] },
+  { s: "Hi, this is my ___.", ja: "こんにちは、こちらが私の家族です。", a: "family", d: ["team", "school", "house"] },
+  { s: "He is my best ___.", ja: "彼は私の親友（いちばんの友達）です。", a: "friend", d: ["teacher", "student", "player"] },
+  { s: "I go to ___ by bus.", ja: "私はバスで学校に行きます。", a: "school", d: ["park", "zoo", "house"] },
+  { s: "My brother is a high school ___.", ja: "私の兄は高校生です。", a: "student", d: ["teacher", "player", "friend"] },
+  { s: "Our English ___ is from Canada.", ja: "私たちの英語の先生はカナダ出身です。", a: "teacher", d: ["student", "friend", "player"] },
+  { s: "I did my ___ before dinner today.", ja: "私は今日、夕食の前に宿題をしました。", a: "homework", d: ["breakfast", "lunch", "music"] },
+  { s: "Have a nice ___!", ja: "良い一日を！", a: "day", d: ["night", "morning", "week"] },
+  { s: "My mother makes breakfast early in the ___.", ja: "母は朝早くに朝食を作ります。", a: "morning", d: ["afternoon", "night", "day"] },
+  { s: "There is a test tomorrow ___.", ja: "明日の午後にテストがあります。", a: "afternoon", d: ["morning", "night", "week"] },
+  { s: "I don't drink coffee at ___.", ja: "私は夜にコーヒーを飲みません。", a: "night", d: ["morning", "afternoon", "day"] },
+  { s: "What ___ do you get up?", ja: "あなたは何時に起きますか。", a: "time", d: ["day", "year", "color"] },
+  { s: "See you next ___!", ja: "また来週会いましょう！", a: "week", d: ["month", "year", "day"] },
+  { s: "Our school has a big event this ___.", ja: "今月、私たちの学校では大きな行事があります。", a: "month", d: ["week", "year", "day"] },
+  { s: "My family stays in this hotel every ___.", ja: "私の家族は毎年このホテルに泊まります。", a: "year", d: ["month", "week", "day"] },
+  { s: "We have a festival in ___.", ja: "5月にお祭りがあります。", a: "May", d: ["October", "summer", "winter"] },
+  { s: "___ 10th was a holiday that year.", ja: "その年は10月10日が祝日でした。", a: "October", d: ["May", "Summer", "Winter"] },
+  { s: "There was a lot of rain this ___.", ja: "この夏はたくさん雨が降りました。", a: "summer", d: ["winter", "May", "October"] },
+  { s: "It is very cold here in ___.", ja: "ここは冬はとても寒いです。", a: "winter", d: ["summer", "May", "October"] },
+  { s: "You can't see those ___ in Japan.", ja: "それらの動物は日本では見られません。", a: "animals", d: ["dogs", "rabbits", "people"] },
+  { s: "I have two ___.", ja: "私は犬を2匹飼っています。", a: "dogs", d: ["rabbits", "animals", "friends"] },
+  { s: "This is a story about two ___.", ja: "これは2匹のウサギについてのお話です。", a: "rabbits", d: ["dogs", "animals", "people"] },
+  { s: "I'm reading a ___ about France.", ja: "私はフランスについての本を読んでいます。", a: "book", d: ["movie", "song", "picture"] },
+  { s: "Let's go to the ___ tomorrow.", ja: "明日、映画を見に行きましょう。", a: "movies", d: ["zoos", "parks", "festivals"] },
+  { s: "I often watch sports on ___.", ja: "私はよくテレビでスポーツを見ます。", a: "TV", d: ["movie", "drama", "music"] },
+  { s: "My friends all love that ___.", ja: "私の友達はみんなそのドラマが大好きです。", a: "drama", d: ["movie", "song", "book"] },
+  { s: "I took some ___ of the castle.", ja: "私はその城の写真を何枚か撮りました。", a: "pictures", d: ["books", "songs", "movies"] },
+  { s: "The plane changed ___ and came back.", ja: "飛行機はコースを変えて戻ってきました。", a: "course", d: ["picture", "team", "color"] },
+  { s: "Is there a summer ___ in your town?", ja: "あなたの町には夏祭りがありますか。", a: "festival", d: ["sport", "song", "food"] },
+  { s: "What is your favorite ___?", ja: "あなたの大好きな食べ物は何ですか。", a: "food", d: ["music", "sport", "color"] },
+  { s: "I had sandwiches for ___ today.", ja: "私は今日、朝食にサンドイッチを食べました。", a: "breakfast", d: ["lunch", "dinner", "tea"] },
+  { s: "They sometimes have ___ in the park.", ja: "彼らはときどき公園で昼食をとります。", a: "lunch", d: ["breakfast", "dinner", "tea"] },
+  { s: "My father is cooking ___ now.", ja: "今、父が夕食を作っているところです。", a: "dinner", d: ["breakfast", "lunch", "tea"] },
+  { s: "We had a good time at the ___.", ja: "私たちはそのレストランで楽しい時間を過ごしました。", a: "restaurant", d: ["park", "zoo", "school"] },
+  { s: "I often listen to ___ at night.", ja: "私は夜によく音楽を聞きます。", a: "music", d: ["TV", "movies", "sports"] },
+  { s: "He plays the ___ very well.", ja: "彼はとても上手にピアノを弾きます。", a: "piano", d: ["guitar", "tennis", "soccer"] },
+  { s: "I played the ___ for my friends.", ja: "私は友達のためにギターを弾きました。", a: "guitar", d: ["piano", "tennis", "soccer"] },
+  { s: "I know some English ___.", ja: "私はいくつか英語の歌を知っています。", a: "songs", d: ["movies", "books", "pictures"] },
+  { s: "She is good at winter ___.", ja: "彼女はウィンタースポーツが得意です。", a: "sports", d: ["songs", "movies", "festivals"] },
+  { s: "Don't play ___ in the park.", ja: "公園でサッカーをしてはいけません。", a: "soccer", d: ["tennis", "piano", "guitar"] },
+  { s: "I play ___ at school.", ja: "私は学校でテニスをしています。", a: "tennis", d: ["soccer", "piano", "guitar"] },
+  { s: "Our soccer ___ has thirty players.", ja: "私たちのサッカーチームには30人の選手がいます。", a: "team", d: ["player", "school", "family"] },
+  { s: "He is a famous basketball ___.", ja: "彼は有名なバスケットボール選手です。", a: "player", d: ["teacher", "student", "friend"] },
+  { s: "When is your ___?", ja: "あなたの誕生日はいつですか。", a: "birthday", d: ["festival", "day", "time"] },
+  { s: "I like the ___ of your shirt.", ja: "私はあなたのシャツの色が気に入っています。", a: "color", d: ["picture", "song", "time"] },
+  { s: "We went to the ___ last Sunday.", ja: "私たちは先週の日曜日に動物園に行きました。", a: "zoo", d: ["park", "school", "restaurant"] },
+  { s: "Many children were playing in the ___.", ja: "多くの子どもたちが公園で遊んでいました。", a: "park", d: ["zoo", "school", "house"] },
+  { s: "Do you drink ___ or coffee after dinner?", ja: "夕食後にお茶かコーヒーを飲みますか。", a: "tea", d: ["food", "lunch", "music"] },
+  { s: "Can you see the ___ trees over there?", ja: "あそこに桜の木が見えますか。", a: "cherry", d: ["color", "park", "food"] },
+  { s: "My ___ is near the station.", ja: "私の家は駅の近くにあります。", a: "house", d: ["school", "park", "zoo"] }
+];
+
+let order = [];        // 出題順（QUESTIONSのインデックス）
+let choiceSets = [];   // 各問題のシャッフル済み選択肢
+let answers = [];      // 生徒の回答（選んだ単語）
+let current = 0;
+let deadline = 0;
+let timerId = null;
+let startTime = 0;
+let studentName = "";
+let finished = false;
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function $(id) { return document.getElementById(id); }
+
+function show(screen) {
+  $("screen-start").classList.add("hidden");
+  $("screen-quiz").classList.add("hidden");
+  $("screen-result").classList.add("hidden");
+  $(screen).classList.remove("hidden");
+  window.scrollTo(0, 0);
+}
+
+function startTest() {
+  const name = $("student-name").value.trim();
+  if (!name) {
+    alert("名前を入力してね！");
+    return;
+  }
+  studentName = name;
+  order = shuffle(QUESTIONS.map((_, i) => i));
+  choiceSets = order.map(qi => shuffle([QUESTIONS[qi].a, ...QUESTIONS[qi].d]));
+  answers = new Array(order.length).fill(null);
+  current = 0;
+  finished = false;
+  startTime = Date.now();
+  deadline = startTime + TIME_LIMIT_MIN * 60 * 1000;
+  if (timerId) clearInterval(timerId);
+  timerId = setInterval(tick, 250);
+  tick();
+  renderQuestion();
+  show("screen-quiz");
+}
+
+function tick() {
+  const remain = Math.max(0, deadline - Date.now());
+  const m = Math.floor(remain / 60000);
+  const s = Math.floor((remain % 60000) / 1000);
+  const el = $("timer");
+  el.textContent = String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+  el.classList.toggle("warn", remain < 5 * 60 * 1000);
+  if (remain <= 0 && !finished) {
+    finishTest(true);
+  }
+}
+
+function renderQuestion() {
+  const qi = order[current];
+  const q = QUESTIONS[qi];
+  $("qcount").textContent = "第" + (current + 1) + "問 / " + order.length;
+  $("progress").style.width = ((current) / order.length * 100) + "%";
+  $("sentence").innerHTML = q.s.replace("___", '<span class="blank">（　　　）</span>');
+  $("ja").textContent = "（" + q.ja + "）";
+
+  const box = $("choices");
+  box.innerHTML = "";
+  choiceSets[current].forEach(word => {
+    const b = document.createElement("button");
+    b.className = "choice" + (answers[current] === word ? " selected" : "");
+    b.textContent = word;
+    b.onclick = () => {
+      answers[current] = word;
+      // 最後の問題以外は自動で次へ
+      if (current < order.length - 1) {
+        current++;
+        renderQuestion();
+      } else {
+        renderQuestion();
+      }
+    };
+    box.appendChild(b);
+  });
+
+  $("btn-back").style.visibility = current === 0 ? "hidden" : "visible";
+  const next = $("btn-next");
+  if (current === order.length - 1) {
+    next.textContent = "テストを終了する";
+  } else {
+    next.textContent = "次へ →";
+  }
+  const unanswered = answers.filter(a => a === null).length;
+  $("unanswered-note").textContent =
+    (current === order.length - 1 && unanswered > 0)
+      ? "未回答が " + unanswered + " 問あります（前へ戻って確認できます）"
+      : "";
+}
+
+function goNext() {
+  if (current === order.length - 1) {
+    const unanswered = answers.filter(a => a === null).length;
+    if (unanswered > 0) {
+      if (!confirm("未回答が " + unanswered + " 問あります。終了しますか？")) return;
+    } else {
+      if (!confirm("テストを終了して答え合わせをしますか？")) return;
+    }
+    finishTest(false);
+  } else {
+    current++;
+    renderQuestion();
+  }
+}
+
+function goBack() {
+  if (current > 0) {
+    current--;
+    renderQuestion();
+  }
+}
+
+function fmtDuration(ms) {
+  const m = Math.floor(ms / 60000);
+  const s = Math.floor((ms % 60000) / 1000);
+  return m + "分" + String(s).padStart(2, "0") + "秒";
+}
+
+function finishTest(byTimeout) {
+  finished = true;
+  if (timerId) clearInterval(timerId);
+  const usedMs = Math.min(Date.now() - startTime, TIME_LIMIT_MIN * 60 * 1000);
+
+  let correct = 0;
+  const wrongs = [];
+  order.forEach((qi, i) => {
+    const q = QUESTIONS[qi];
+    if (answers[i] === q.a) {
+      correct++;
+    } else {
+      wrongs.push({ no: i + 1, q: q, chosen: answers[i] });
+    }
+  });
+  const total = order.length;
+  const pct = Math.round(correct / total * 100);
+
+  $("result-title").textContent = byTimeout ? "時間切れ！テスト終了" : "テスト結果";
+  $("score-pct").textContent = pct + "点";
+  $("score-detail").textContent =
+    studentName + " さん ／ 正解 " + correct + " / " + total + " 問 ／ 所要時間 " + fmtDuration(usedMs);
+
+  // 答え合わせ一覧
+  const review = $("review");
+  review.innerHTML = "";
+  order.forEach((qi, i) => {
+    const q = QUESTIONS[qi];
+    const ok = answers[i] === q.a;
+    const div = document.createElement("div");
+    div.className = "review-item " + (ok ? "ok" : "ng");
+    const sentence = q.s.replace("___", "【 " + q.a + " 】");
+    let html = '<span class="mark">' + (ok ? "○" : "×") + "</span>"
+      + "第" + (i + 1) + '問　<span class="en">' + sentence + "</span>"
+      + '<div class="ja" style="margin:2px 0 0;">（' + q.ja + "）</div>";
+    if (!ok) {
+      html += '<div class="ans-line">正解: <span class="correct-w">' + q.a + "</span>　あなたの答え: "
+        + '<span class="wrong-w">' + (answers[i] === null ? "（未回答）" : answers[i]) + "</span></div>";
+    }
+    div.innerHTML = html;
+    review.appendChild(div);
+  });
+
+  // LINE送信用テキスト
+  const now = new Date();
+  const dateStr = now.getFullYear() + "/" + (now.getMonth() + 1) + "/" + now.getDate()
+    + " " + now.getHours() + ":" + String(now.getMinutes()).padStart(2, "0");
+  let text = "【英単語テスト結果】\n"
+    + "名前: " + studentName + "\n"
+    + "範囲: 1〜50（people〜house）\n"
+    + "得点: " + pct + "点（" + correct + "/" + total + "問正解）\n"
+    + "所要時間: " + fmtDuration(usedMs) + (byTimeout ? "（時間切れ）" : "") + "\n"
+    + "実施日時: " + dateStr + "\n";
+  if (wrongs.length === 0) {
+    text += "全問正解！🎉";
+  } else {
+    text += "── 間違えた問題 ──\n";
+    wrongs.forEach(w => {
+      text += "第" + w.no + "問 正解:" + w.q.a + "（答え:" + (w.chosen === null ? "未回答" : w.chosen) + "）\n";
+    });
+  }
+
+  $("btn-line").href = "https://line.me/R/share?text=" + encodeURIComponent(text);
+  $("btn-copy").onclick = () => {
+    const done = () => {
+      $("copied-msg").textContent = "コピーしました！LINEに貼り付けて送ってね";
+      setTimeout(() => { $("copied-msg").textContent = ""; }, 3000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+    } else {
+      fallbackCopy(text, done);
+    }
+  };
+
+  show("screen-result");
+}
+
+function fallbackCopy(text, done) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand("copy"); done(); } catch (e) {}
+  document.body.removeChild(ta);
+}
+
+$("btn-start").onclick = startTest;
+$("btn-next").onclick = goNext;
+$("btn-back").onclick = goBack;
+$("btn-retry").onclick = () => {
+  show("screen-start");
+};
+</script>
+</body>
+</html>
