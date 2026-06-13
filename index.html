@@ -124,6 +124,14 @@
   .review-item .correct-w { color: #38a169; font-weight: bold; }
   .review-item .wrong-w { color: #e53e3e; text-decoration: line-through; }
   .copied-msg { text-align: center; color: #38a169; font-size: 14px; margin-top: 8px; min-height: 20px; }
+  .save-status { text-align: center; font-size: 14px; margin-bottom: 12px; color: #718096; min-height: 20px; }
+  .save-status.ok { color: #38a169; }
+  .save-status.err { color: #e53e3e; }
+  .retry-mini {
+    font-size: 13px; padding: 4px 12px; margin-left: 6px;
+    border: 1px solid #e53e3e; border-radius: 8px;
+    background: #fff; color: #e53e3e; cursor: pointer;
+  }
   .hidden { display: none; }
 </style>
 </head>
@@ -144,6 +152,7 @@
       </ul>
       <input type="text" id="student-name" placeholder="名前を入力してね" autocomplete="off">
       <button class="btn btn-primary" id="btn-start">テストを始める</button>
+      <a class="btn btn-gray" href="./results.html">📊 これまでの成績を見る</a>
     </div>
   </div>
 
@@ -172,7 +181,9 @@
       <h2 id="result-title">テスト結果</h2>
       <div class="score-big" id="score-pct"></div>
       <div class="score-detail" id="score-detail"></div>
-      <a class="btn btn-line" id="btn-line" target="_blank" rel="noopener">結果をLINEで送る</a>
+      <div class="save-status" id="save-status"></div>
+      <a class="btn btn-gray" href="./results.html">📊 これまでの成績を見る</a>
+      <a class="btn btn-line" id="btn-line" target="_blank" rel="noopener">結果をLINEでも知らせる</a>
       <button class="btn btn-gray" id="btn-copy">結果をコピーする</button>
       <div class="copied-msg" id="copied-msg"></div>
       <button class="btn btn-primary" id="btn-retry" style="margin-top:10px;">もう一度挑戦する</button>
@@ -396,6 +407,18 @@ function finishTest(byTimeout) {
   $("score-detail").textContent =
     studentName + " さん ／ 正解 " + correct + " / " + total + " 問 ／ 所要時間 " + fmtDuration(usedMs);
 
+  // データベースに結果を保存
+  saveToDb({
+    name: studentName,
+    score: pct,
+    correct: correct,
+    total: total,
+    durationSec: Math.round(usedMs / 1000),
+    timedOut: !!byTimeout,
+    ts: Date.now(),
+    wrongs: wrongs.map(w => ({ no: w.no, word: w.q.a, chosen: w.chosen === null ? "" : w.chosen }))
+  });
+
   // 答え合わせ一覧
   const review = $("review");
   review.innerHTML = "";
@@ -434,6 +457,7 @@ function finishTest(byTimeout) {
       text += "第" + w.no + "問 正解:" + w.q.a + "（答え:" + (w.chosen === null ? "未回答" : w.chosen) + "）\n";
     });
   }
+  text += "\n📊 成績ページ: https://hanamichi0617-byte.github.io/eitango-test/results.html";
 
   $("btn-line").href = "https://line.me/R/share?text=" + encodeURIComponent(text);
   $("btn-copy").onclick = () => {
@@ -451,6 +475,36 @@ function finishTest(byTimeout) {
   show("screen-result");
 }
 
+function saveToDb(payload) {
+  const el = $("save-status");
+  el.className = "save-status";
+  el.textContent = "結果を保存中…";
+  let tries = 0;
+  const attempt = () => {
+    // Firebase SDK（モジュール）の読み込み完了を待つ
+    if (!window.__saveResult) {
+      if (++tries > 50) { fail(); return; }
+      setTimeout(attempt, 200);
+      return;
+    }
+    const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 15000));
+    Promise.race([window.__saveResult(payload), timeout]).then(() => {
+      el.className = "save-status ok";
+      el.textContent = "✓ 結果を保存しました（成績ページで見られます）";
+    }).catch(fail);
+  };
+  const fail = () => {
+    el.className = "save-status err";
+    el.textContent = "保存に失敗しました。";
+    const b = document.createElement("button");
+    b.textContent = "再試行";
+    b.className = "retry-mini";
+    b.onclick = () => saveToDb(payload);
+    el.appendChild(b);
+  };
+  attempt();
+}
+
 function fallbackCopy(text, done) {
   const ta = document.createElement("textarea");
   ta.value = text;
@@ -466,6 +520,19 @@ $("btn-back").onclick = goBack;
 $("btn-retry").onclick = () => {
   show("screen-start");
 };
+</script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+const app = initializeApp({
+  projectId: "eitango-test-9617-64eb4",
+  appId: "1:338226814189:web:19cb6337da48f580af80e4",
+  apiKey: "AIzaSyBMm7ZAW3lWtHDQr9ACSP16OcgRmMOEM2A",
+  authDomain: "eitango-test-9617-64eb4.firebaseapp.com"
+});
+const db = getFirestore(app);
+window.__saveResult = (data) => addDoc(collection(db, "results"), { ...data, createdAt: serverTimestamp() });
 </script>
 </body>
 </html>
