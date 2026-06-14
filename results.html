@@ -73,7 +73,17 @@
   select {
     font-size: 14px; padding: 8px 12px;
     border: 2px solid #cbd5e0; border-radius: 10px;
-    background: #fff; margin-bottom: 4px;
+    background: #fff; margin-bottom: 4px; width: 100%;
+  }
+  .filter-row { display: flex; gap: 12px; }
+  .filter-row > div { flex: 1; min-width: 0; }
+  .filter-label { font-size: 12px; color: #718096; margin-bottom: 4px; }
+  .range-badge {
+    display: inline-block;
+    font-size: 11px; font-weight: bold;
+    color: #c44a08; background: #fff4ec;
+    border-radius: 6px; padding: 1px 8px; margin-left: 6px;
+    vertical-align: middle;
   }
 
   /* 履歴 */
@@ -103,8 +113,26 @@
 <div class="container">
   <div class="card">
     <h1>📊 成績ページ</h1>
-    <div class="sub">英単語テスト（1〜50 people〜house）の記録</div>
+    <div class="sub">英単語テスト（1〜100）の記録</div>
     <a class="btn" href="./index.html">テストを受ける</a>
+  </div>
+
+  <div class="card">
+    <h2>しぼり込み</h2>
+    <div class="filter-row">
+      <div>
+        <div class="filter-label">名前</div>
+        <select id="name-filter"><option value="">全員</option></select>
+      </div>
+      <div>
+        <div class="filter-label">範囲</div>
+        <select id="range-filter">
+          <option value="">すべての範囲</option>
+          <option value="1-50">1〜50（people〜house）</option>
+          <option value="51-100">51〜100（wall〜check）</option>
+        </select>
+      </div>
+    </div>
   </div>
 
   <div class="card">
@@ -115,7 +143,6 @@
 
   <div class="card">
     <h2>受験履歴</h2>
-    <select id="name-filter"><option value="">全員</option></select>
     <div id="history" class="loading">読み込み中…</div>
   </div>
 </div>
@@ -146,6 +173,12 @@ function fmtWhen(ts) {
 
 function fmtDur(sec) {
   return Math.floor(sec / 60) + "分" + String(sec % 60).padStart(2, "0") + "秒";
+}
+
+// 範囲の短い表示（古い記録はrangeが無いので1〜50扱い）
+function rangeShort(r) {
+  const rg = r.range || "1-50";
+  return rg === "51-100" ? "51〜100" : "1〜50";
 }
 
 function renderChart(results) {
@@ -221,9 +254,10 @@ function renderHistory(results) {
     const head = document.createElement("div");
     head.className = "head";
     const left = document.createElement("div");
-    left.innerHTML = '<span class="who"></span> <span class="when"></span>';
+    left.innerHTML = '<span class="who"></span> <span class="when"></span><span class="range-badge"></span>';
     left.querySelector(".who").textContent = r.name;
     left.querySelector(".when").textContent = fmtWhen(r.ts);
+    left.querySelector(".range-badge").textContent = rangeShort(r);
     const score = document.createElement("div");
     score.className = "score" + (r.score === 100 ? " perfect" : "");
     score.textContent = r.score + "点";
@@ -269,7 +303,11 @@ function renderHistory(results) {
 
 function applyFilter() {
   const name = document.getElementById("name-filter").value;
-  const filtered = name ? allResults.filter(r => r.name === name) : allResults;
+  const range = document.getElementById("range-filter").value;
+  const filtered = allResults.filter(r =>
+    (!name || r.name === name) &&
+    (!range || (r.range || "1-50") === range)
+  );
   renderChart(filtered);
   renderHistory(filtered);
 }
@@ -288,7 +326,7 @@ async function load() {
       sel.appendChild(o);
     });
     sel.onchange = applyFilter;
-    if (names.length <= 1) sel.style.display = "none";
+    document.getElementById("range-filter").onchange = applyFilter;
 
     applyFilter();
   } catch (e) {

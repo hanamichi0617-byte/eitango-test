@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>英単語テスト（1〜50 house まで）</title>
+<title>英単語テスト（1〜100）</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body { height: 100%; }
@@ -53,6 +53,25 @@
   .btn-line { background: #06c755; color: #fff; margin-top: 10px; }
   .btn-gray { background: #e2e8f0; color: #2d3748; margin-top: 10px; }
   .btn:disabled { background: #cbd5e0; color: #fff; cursor: default; }
+
+  /* 範囲えらび */
+  .range-label { font-size: 14px; font-weight: bold; color: #4a5568; margin-bottom: 8px; }
+  .range-group { display: grid; gap: 10px; margin-bottom: 20px; }
+  .range-opt {
+    font-size: 17px;
+    padding: 14px 16px;
+    border: 2px solid #cbd5e0;
+    border-radius: 12px;
+    background: #fff;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    font-weight: bold;
+    color: #2d3748;
+  }
+  .range-opt .small { display: block; font-size: 12px; font-weight: normal; color: #718096; margin-top: 2px; }
+  .range-opt.selected { border-color: #e8590c; background: #fff4ec; color: #e8590c; }
+  .range-opt.selected .small { color: #c44a08; }
 
   /* テスト画面 */
   .topbar {
@@ -142,7 +161,7 @@
   <div id="screen-start">
     <div class="card">
       <h1>英単語テスト</h1>
-      <div class="sub">範囲：1〜50番（people 〜 house）／ 全50問・4択</div>
+      <div class="sub">各範囲50問・4択／制限時間30分</div>
       <ul class="rule-list">
         <li>文に当てはまる英単語を4つの中から選んでね</li>
         <li><b>制限時間は30分</b>。時間になると自動的に終了します</li>
@@ -151,6 +170,11 @@
         <li>何度でも挑戦できます（問題の順番は毎回変わります）</li>
       </ul>
       <input type="text" id="student-name" placeholder="名前を入力してね" autocomplete="off">
+      <div class="range-label">出題する範囲をえらんでね</div>
+      <div class="range-group" id="range-group">
+        <button class="range-opt selected" data-range="1-50">1〜50番<span class="small">people 〜 house</span></button>
+        <button class="range-opt" data-range="51-100">51〜100番<span class="small">wall 〜 check</span></button>
+      </div>
       <button class="btn btn-primary" id="btn-start">テストを始める</button>
       <a class="btn btn-gray" href="./results.html">📊 これまでの成績を見る</a>
     </div>
@@ -200,7 +224,10 @@
 const TIME_LIMIT_MIN = 30;
 
 // 問題データ（s: 英文 / ja: 日本語訳 / a: 正解 / d: 誤答の選択肢）
-const QUESTIONS = [
+const QUESTION_BANK = {
+ "1-50": {
+  label: "1〜50（people〜house）",
+  questions: [
   { s: "Many ___ visit the park.", ja: "多くの人々がその公園を訪れます。", a: "people", d: ["students", "teachers", "players"] },
   { s: "Hi, this is my ___.", ja: "こんにちは、こちらが私の家族です。", a: "family", d: ["team", "school", "house"] },
   { s: "He is my best ___.", ja: "彼は私の親友（いちばんの友達）です。", a: "friend", d: ["teacher", "student", "player"] },
@@ -251,7 +278,66 @@ const QUESTIONS = [
   { s: "Do you drink ___ or coffee after dinner?", ja: "夕食後にお茶かコーヒーを飲みますか。", a: "tea", d: ["food", "lunch", "music"] },
   { s: "Can you see the ___ trees over there?", ja: "あそこに桜の木が見えますか。", a: "cherry", d: ["color", "park", "food"] },
   { s: "My ___ is near the station.", ja: "私の家は駅の近くにあります。", a: "house", d: ["school", "park", "zoo"] }
-];
+  ]
+ },
+ "51-100": {
+  label: "51〜100（wall〜check）",
+  questions: [
+  { s: "Those pictures on the ___ are very nice.", ja: "壁にかかっているそれらの絵はとてもすてきですね。", a: "wall", d: ["chair", "notebook", "weekend"] },
+  { s: "I have three ___.", ja: "私は帽子を3つ持っています。", a: "caps", d: ["pens", "books", "chairs"] },
+  { s: "I bought a new ___.", ja: "私は新しいノートを買いました。", a: "notebook", d: ["umbrella", "concert", "cap"] },
+  { s: "Can I borrow your ___?", ja: "あなたのペンを借りてもいいですか。", a: "pen", d: ["cap", "notebook", "umbrella"] },
+  { s: "Write with a pen, not a ___.", ja: "鉛筆ではなくペンで書いてください。", a: "pencil", d: ["cap", "chair", "wall"] },
+  { s: "I left my ___ at school.", ja: "私は学校に傘を置き忘れてしまいました。", a: "umbrella", d: ["notebook", "cap", "pencil"] },
+  { s: "My cat always sits on my ___.", ja: "うちのネコはいつも私のいすに座ります。", a: "chair", d: ["wall", "notebook", "umbrella"] },
+  { s: "I usually play tennis on ___.", ja: "私は週末にたいていテニスをします。", a: "weekends", d: ["concerts", "walls", "caps"] },
+  { s: "We went to a rock ___ last weekend.", ja: "私たちは先週末にロックコンサートに行きました。", a: "concert", d: ["musician", "weekend", "notebook"] },
+  { s: "The ___ sang five songs on the street.", ja: "そのミュージシャンは路上で5曲歌いました。", a: "musician", d: ["concert", "weekend", "cap"] },
+  { s: "Does this bus ___ to Umeda Station?", ja: "このバスは梅田駅まで行きますか。", a: "go", d: ["come", "take", "see"] },
+  { s: "He ___ to Japan from America last week.", ja: "彼は先週アメリカから日本にやって来ました。", a: "came", d: ["went", "made", "took"] },
+  { s: "She ___ a new bag.", ja: "彼女は新しいかばんを欲しがっています。", a: "wants", d: ["makes", "takes", "knows"] },
+  { s: "Do you ___ his phone number?", ja: "あなたは彼の電話番号を知っていますか。", a: "know", d: ["see", "want", "use"] },
+  { s: "My brother and I ___ a chair.", ja: "兄と私はいすを作りました。", a: "made", d: ["came", "took", "saw"] },
+  { s: "You can ___ the beautiful sea from the hotel.", ja: "そのホテルから美しい海が見えます。", a: "see", d: ["know", "make", "use"] },
+  { s: "She ___ at me and smiled.", ja: "彼女は私を見てほほえみました。", a: "looked", d: ["talked", "waited", "came"] },
+  { s: "Many people ___ the parade on Sunday.", ja: "多くの人が日曜日のパレードを見ました。", a: "watched", d: ["waited", "visited", "enjoyed"] },
+  { s: "What do you ___ about my idea?", ja: "私の考えについてどう思いますか。", a: "think", d: ["know", "see", "want"] },
+  { s: "Please ___ my umbrella.", ja: "私の傘を使ってください。", a: "use", d: ["take", "make", "try"] },
+  { s: "I don't ___ video games.", ja: "私はビデオゲームをしません。", a: "play", d: ["watch", "use", "make"] },
+  { s: "I ___ to him about the movie.", ja: "私は彼に映画について話しました。", a: "talked", d: ["looked", "waited", "came"] },
+  { s: "___ your trip!", ja: "旅行を楽しんでください。", a: "Enjoy", d: ["Keep", "Use", "Try"] },
+  { s: "They don't ___ meat or fish.", ja: "彼らは肉や魚を食べません。", a: "eat", d: ["drink", "make", "take"] },
+  { s: "I ___ two tickets for the concert.", ja: "私はそのコンサートのチケットを2枚手に入れました。", a: "got", d: ["came", "saw", "made"] },
+  { s: "We ___ a taxi to the hospital.", ja: "私たちは病院までタクシーに乗っていきました。", a: "took", d: ["got", "came", "made"] },
+  { s: "He ___ a new racket.", ja: "彼は新しいラケットを試してみました。", a: "tried", d: ["used", "made", "bought"] },
+  { s: "My father ___ to the radio every morning.", ja: "父は毎朝ラジオを聞いています。", a: "listens", d: ["watches", "talks", "plays"] },
+  { s: "I ___ the sound of rain last night.", ja: "私は昨夜、雨の音が聞こえました。", a: "heard", d: ["watched", "kept", "took"] },
+  { s: "I ___ my grandparents every summer.", ja: "私は毎年夏に祖父母を訪ねます。", a: "visit", d: ["see", "come", "go"] },
+  { s: "We ___ for him for an hour.", ja: "私たちは1時間彼を待ちました。", a: "waited", d: ["looked", "talked", "walked"] },
+  { s: "How can we ___ the next game?", ja: "どうしたら次の試合に勝てるだろうか。", a: "win", d: ["play", "get", "keep"] },
+  { s: "My eraser ___ off my desk during the test.", ja: "テスト中に消しゴムが机から落ちてしまいました。", a: "fell", d: ["ran", "jumped", "kept"] },
+  { s: "My father can still ___ his high school song.", ja: "父は今でも高校の校歌を歌うことができます。", a: "sing", d: ["play", "hear", "keep"] },
+  { s: "___ it in a cool place.", ja: "涼しい場所にそれを保管してください。", a: "Keep", d: ["Make", "Use", "Try"] },
+  { s: "He often ___ pictures of animals.", ja: "彼はよく動物の絵を描きます。", a: "draws", d: ["writes", "reads", "buys"] },
+  { s: "I ___ a letter to my friend in China.", ja: "私は中国にいる友人に手紙を書きました。", a: "wrote", d: ["drew", "read", "bought"] },
+  { s: "This train doesn't ___ at Tokyo Station.", ja: "この電車は東京駅には止まりません。", a: "stop", d: ["go", "come", "run"] },
+  { s: "She ___ her bag on her bed.", ja: "彼女はかばんをベッドの上に置きました。", a: "put", d: ["kept", "made", "left"] },
+  { s: "I was ___ science then.", ja: "私はそのとき理科を勉強していました。", a: "studying", d: ["reading", "writing", "making"] },
+  { s: "We are ___ the history of the town.", ja: "私たちはその町の歴史を学んでいます。", a: "learning", d: ["reading", "writing", "making"] },
+  { s: "I usually ___ to school.", ja: "私はたいてい学校へ歩いて行きます。", a: "walk", d: ["run", "ride", "swim"] },
+  { s: "They ___ to the bus stop.", ja: "彼らはバス停まで走りました。", a: "ran", d: ["walked", "jumped", "swam"] },
+  { s: "He ___ flowers for his mother.", ja: "彼はお母さんに花を買いました。", a: "bought", d: ["made", "read", "kept"] },
+  { s: "She ___ ten books a month.", ja: "彼女はひと月に10冊の本を読みます。", a: "reads", d: ["writes", "buys", "draws"] },
+  { s: "When do you ___ the piano?", ja: "あなたはいつピアノを練習するのですか。", a: "practice", d: ["study", "learn", "keep"] },
+  { s: "What time do you ___ home?", ja: "あなたは何時に家を出ますか。", a: "leave", d: ["come", "get", "keep"] },
+  { s: "I ___ a lot of water yesterday.", ja: "私は昨日たくさん水を飲みました。", a: "drank", d: ["ate", "made", "took"] },
+  { s: "He ___ and looked at us.", ja: "彼は振り返って私たちを見ました。", a: "turned", d: ["walked", "jumped", "stopped"] },
+  { s: "Can you ___ my answers?", ja: "私の答えをチェックしてもらえますか。", a: "check", d: ["read", "write", "keep"] }
+  ]
+ }
+};
+let currentRange = "1-50";
+let QUESTIONS = QUESTION_BANK[currentRange].questions;
 
 let order = [];        // 出題順（QUESTIONSのインデックス）
 let choiceSets = [];   // 各問題のシャッフル済み選択肢
@@ -289,6 +375,7 @@ function startTest() {
     return;
   }
   studentName = name;
+  QUESTIONS = QUESTION_BANK[currentRange].questions;
   order = shuffle(QUESTIONS.map((_, i) => i));
   choiceSets = order.map(qi => shuffle([QUESTIONS[qi].a, ...QUESTIONS[qi].d]));
   answers = new Array(order.length).fill(null);
@@ -410,6 +497,8 @@ function finishTest(byTimeout) {
   // データベースに結果を保存
   saveToDb({
     name: studentName,
+    range: currentRange,
+    rangeLabel: QUESTION_BANK[currentRange].label,
     score: pct,
     correct: correct,
     total: total,
@@ -445,7 +534,7 @@ function finishTest(byTimeout) {
     + " " + now.getHours() + ":" + String(now.getMinutes()).padStart(2, "0");
   let text = "【英単語テスト結果】\n"
     + "名前: " + studentName + "\n"
-    + "範囲: 1〜50（people〜house）\n"
+    + "範囲: " + QUESTION_BANK[currentRange].label + "\n"
     + "得点: " + pct + "点（" + correct + "/" + total + "問正解）\n"
     + "所要時間: " + fmtDuration(usedMs) + (byTimeout ? "（時間切れ）" : "") + "\n"
     + "実施日時: " + dateStr + "\n";
@@ -513,6 +602,14 @@ function fallbackCopy(text, done) {
   try { document.execCommand("copy"); done(); } catch (e) {}
   document.body.removeChild(ta);
 }
+
+$("range-group").querySelectorAll(".range-opt").forEach(btn => {
+  btn.onclick = () => {
+    currentRange = btn.dataset.range;
+    $("range-group").querySelectorAll(".range-opt").forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+  };
+});
 
 $("btn-start").onclick = startTest;
 $("btn-next").onclick = goNext;
