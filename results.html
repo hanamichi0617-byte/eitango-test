@@ -130,6 +130,7 @@
           <option value="">すべての範囲</option>
           <option value="1-50">1〜50（people〜house）</option>
           <option value="51-100">51〜100（wall〜check）</option>
+          <option value="101-150">101〜150（ride〜vacation）</option>
         </select>
       </div>
     </div>
@@ -178,7 +179,9 @@ function fmtDur(sec) {
 // 範囲の短い表示（古い記録はrangeが無いので1〜50扱い）
 function rangeShort(r) {
   const rg = r.range || "1-50";
-  return rg === "51-100" ? "51〜100" : "1〜50";
+  if (rg === "51-100") return "51〜100";
+  if (rg === "101-150") return "101〜150";
+  return "1〜50";
 }
 
 function renderChart(results) {

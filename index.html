@@ -174,6 +174,7 @@
       <div class="range-group" id="range-group">
         <button class="range-opt selected" data-range="1-50">1〜50番<span class="small">people 〜 house</span></button>
         <button class="range-opt" data-range="51-100">51〜100番<span class="small">wall 〜 check</span></button>
+        <button class="range-opt" data-range="101-150">101〜150番<span class="small">ride 〜 vacation</span></button>
       </div>
       <button class="btn btn-primary" id="btn-start">テストを始める</button>
       <a class="btn btn-gray" href="./results.html">📊 これまでの成績を見る</a>
@@ -333,6 +334,61 @@ const QUESTION_BANK = {
   { s: "I ___ a lot of water yesterday.", ja: "私は昨日たくさん水を飲みました。", a: "drank", d: ["ate", "made", "took"] },
   { s: "He ___ and looked at us.", ja: "彼は振り返って私たちを見ました。", a: "turned", d: ["walked", "jumped", "stopped"] },
   { s: "Can you ___ my answers?", ja: "私の答えをチェックしてもらえますか。", a: "check", d: ["read", "write", "keep"] }
+  ]
+ },
+ "101-150": {
+  label: "101〜150（ride〜vacation）",
+  questions: [
+  { s: "My mother ___ her bicycle to the office.", ja: "母は会社まで自転車に乗っていきます。", a: "rides", d: ["walks", "runs", "swims"] },
+  { s: "We ___ in the sea this afternoon.", ja: "私たちは今日の午後、海で泳ぎました。", a: "swam", d: ["walked", "played", "jumped"] },
+  { s: "Did you ___ your hands?", ja: "手を洗いましたか。", a: "wash", d: ["help", "check", "turn"] },
+  { s: "They were ___ to the song.", ja: "彼らはその歌に合わせて踊っていました。", a: "dancing", d: ["singing", "walking", "jumping"] },
+  { s: "Don't ___ into the pool.", ja: "プールに飛び込んではいけません。", a: "jump", d: ["run", "swim", "dance"] },
+  { s: "I ___ my sister with her homework.", ja: "私は妹の宿題を手伝いました。", a: "helped", d: ["watched", "worked", "washed"] },
+  { s: "He ___, \"Nice to meet you.\"", ja: "彼は「はじめまして」と言いました。", a: "said", d: ["talked", "looked", "heard"] },
+  { s: "They ___ from nine to five.", ja: "彼らは9時から5時まで働きます。", a: "work", d: ["play", "study", "walk"] },
+  { s: "We went to the park by ___.", ja: "私たちは公園にバスで行きました。", a: "bus", d: ["car", "train", "bike"] },
+  { s: "Our ___ practices after school every day.", ja: "私たちのクラブは毎日放課後に練習します。", a: "club", d: ["team", "school", "gym"] },
+  { s: "He visited some ___ in France.", ja: "彼はフランスでいくつかの美術館を訪れました。", a: "museums", d: ["libraries", "hospitals", "stations"] },
+  { s: "I always carry my own ___ bag.", ja: "私はいつも自分の買い物袋を持っていきます。", a: "shopping", d: ["school", "cooking", "sleeping"] },
+  { s: "Our city has about twenty ___.", ja: "私たちの市には20ほどの図書館があります。", a: "libraries", d: ["museums", "hospitals", "stations"] },
+  { s: "I ate an ___ for lunch.", ja: "私は昼食にリンゴを食べました。", a: "apple", d: ["egg", "orange", "snack"] },
+  { s: "I keep my old toys in these ___.", ja: "私は古いおもちゃをこれらの箱に保管しています。", a: "boxes", d: ["bags", "cards", "books"] },
+  { s: "I can't catch the ___ well.", ja: "私はうまくボールをキャッチできません。", a: "ball", d: ["box", "card", "ink"] },
+  { s: "My favorite ___ is English.", ja: "私の大好きな教科は英語です。", a: "subject", d: ["science", "color", "sport"] },
+  { s: "I have a ___ class today.", ja: "私は今日、数学の授業があります。", a: "math", d: ["science", "art", "music"] },
+  { s: "He is good at ___.", ja: "彼は理科が得意です。", a: "science", d: ["math", "art", "music"] },
+  { s: "They are talking about Japanese ___.", ja: "彼らは日本の芸術について話しています。", a: "art", d: ["music", "food", "science"] },
+  { s: "My ___ is sleeping under the table.", ja: "私のネコはテーブルの下で眠っています。", a: "cat", d: ["dog", "rabbit", "bird"] },
+  { s: "The ___ were walking around in the zoo.", ja: "ペンギンが動物園で歩き回っていました。", a: "penguins", d: ["animals", "rabbits", "cats"] },
+  { s: "I have a volleyball game in our school ___ tomorrow.", ja: "明日、学校の体育館でバレーボールの試合があります。", a: "gym", d: ["park", "library", "museum"] },
+  { s: "I took a ___ at around nine yesterday.", ja: "私は昨日9時ごろにお風呂に入りました。", a: "bath", d: ["walk", "rest", "shower"] },
+  { s: "Can you open the ___?", ja: "窓を開けてくれますか。", a: "window", d: ["door", "box", "book"] },
+  { s: "I had a ___ in the afternoon.", ja: "私は午後におやつを食べました。", a: "snack", d: ["lunch", "dinner", "drink"] },
+  { s: "He is writing a letter in ___.", ja: "彼はインクで手紙を書いています。", a: "ink", d: ["pen", "paper", "red"] },
+  { s: "The ___ is still young.", ja: "その王はまだ若いです。", a: "king", d: ["queen", "boy", "man"] },
+  { s: "They love their country's ___.", ja: "彼らは自分たちの国の女王を愛しています。", a: "queen", d: ["king", "girl", "woman"] },
+  { s: "Take off your ___ here, please.", ja: "ここで靴を脱いでください。", a: "shoes", d: ["caps", "socks", "bags"] },
+  { s: "You can see many ___ in the park in spring.", ja: "春には公園でたくさんの花を見ることができます。", a: "flowers", d: ["trees", "animals", "birds"] },
+  { s: "There is an apple ___ in our garden.", ja: "うちの庭にはリンゴの木があります。", a: "tree", d: ["flower", "box", "book"] },
+  { s: "See you at the ___ at five.", ja: "5時に駅で会いましょう。", a: "station", d: ["park", "school", "gym"] },
+  { s: "My brother uses an old ___.", ja: "兄は古いコンピューターを使います。", a: "computer", d: ["phone", "camera", "book"] },
+  { s: "The young ___ were practicing dancing this morning.", ja: "若い女の子たちが今朝ダンスの練習をしていました。", a: "girls", d: ["boys", "students", "children"] },
+  { s: "The little ___ often helps his mother.", ja: "その小さな男の子はよく母親の手伝いをします。", a: "boy", d: ["girl", "man", "doctor"] },
+  { s: "The trees on this ___ are very beautiful in the fall.", ja: "この通りの木々は秋にとても美しいです。", a: "street", d: ["park", "station", "garden"] },
+  { s: "He is in the ___ now.", ja: "彼は今、入院しています。", a: "hospital", d: ["school", "station", "library"] },
+  { s: "I saw my ___ yesterday.", ja: "私は昨日、かかりつけの医者にみてもらいました。", a: "doctor", d: ["teacher", "nurse", "friend"] },
+  { s: "He climbs that ___ every year.", ja: "彼は毎年その山に登ります。", a: "mountain", d: ["tree", "river", "sea"] },
+  { s: "They are swimming in the ___ now.", ja: "彼らは今、海で泳いでいます。", a: "sea", d: ["pool", "river", "sky"] },
+  { s: "Can you put it on the ___?", ja: "それをテーブルの上に置いてくれますか。", a: "table", d: ["desk", "chair", "floor"] },
+  { s: "I was reading at my ___ last night.", ja: "私は昨夜、自分の机で本を読んでいました。", a: "desk", d: ["table", "chair", "bed"] },
+  { s: "Write your name on this ___.", ja: "このカードに名前を書いてください。", a: "card", d: ["paper", "notebook", "box"] },
+  { s: "You can't eat snacks in the ___.", ja: "教室でおやつを食べてはいけません。", a: "classroom", d: ["library", "station", "museum"] },
+  { s: "Wash the ___. It's your turn today.", ja: "食器を洗ってね。今日はあなたの番です。", a: "dishes", d: ["clothes", "hands", "windows"] },
+  { s: "We walked from the station to the baseball ___.", ja: "私たちは駅から野球場まで歩きました。", a: "stadium", d: ["park", "gym", "station"] },
+  { s: "We watched the ___ last night.", ja: "私たちは昨夜、花火を見ました。", a: "fireworks", d: ["stars", "movies", "games"] },
+  { s: "My father goes to ___ at ten every night.", ja: "父は毎晩10時に寝ます。", a: "bed", d: ["work", "school", "home"] },
+  { s: "I visited my friend in Toyama during summer ___.", ja: "私は夏休みに富山の友達を訪ねました。", a: "vacation", d: ["weekend", "festival", "morning"] }
   ]
  }
 };
