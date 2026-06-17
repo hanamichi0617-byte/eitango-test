@@ -176,6 +176,7 @@
         <button class="range-opt" data-range="51-100">51〜100番<span class="small">wall 〜 check</span></button>
         <button class="range-opt" data-range="101-150">101〜150番<span class="small">ride 〜 vacation</span></button>
         <button class="range-opt" data-range="151-200">151〜200番<span class="small">bread 〜 speak</span></button>
+        <button class="range-opt" data-range="201-250">201〜250番<span class="small">like 〜 many</span></button>
       </div>
       <button class="btn btn-primary" id="btn-start">テストを始める</button>
       <a class="btn btn-gray" href="./results.html">📊 これまでの成績を見る</a>
@@ -445,6 +446,61 @@ const QUESTION_BANK = {
   { s: "We went ___ in Hokkaido last weekend.", ja: "私たちは先週末、北海道へスキーに行きました。", a: "skiing", d: ["skating", "swimming", "running"] },
   { s: "I learned how to ___ from my father.", ja: "私は父からスケートのやり方を習いました。", a: "skate", d: ["ski", "swim", "dance"] },
   { s: "Do they ___ English?", ja: "彼らは英語を話しますか。", a: "speak", d: ["tell", "teach", "say"] }
+  ]
+ },
+ "201-250": {
+  label: "201〜250（like〜many）",
+  questions: [
+  { s: "I ___ noodles very much.", ja: "私は麺がとても好きです。", a: "like", d: ["want", "cook", "need"] },
+  { s: "My sister ___ in America.", ja: "姉はアメリカに住んでいます。", a: "lives", d: ["stays", "works", "visits"] },
+  { s: "He is ___ dinner in the kitchen.", ja: "彼は台所で夕食を作っています。", a: "cooking", d: ["eating", "making", "having"] },
+  { s: "Can I ___ this box?", ja: "この箱を開けてもいいですか。", a: "open", d: ["close", "take", "give"] },
+  { s: "I didn't ___ my homework yesterday.", ja: "私は昨日、宿題をしませんでした。", a: "do", d: ["make", "take", "have"] },
+  { s: "She wants to ___ a movie star.", ja: "彼女は映画スターになりたがっています。", a: "be", d: ["get", "do", "have"] },
+  { s: "I ___ sing this song in English.", ja: "私はこの歌を英語で歌えます。", a: "can", d: ["must", "will", "may"] },
+  { s: "The team ___ win the game.", ja: "そのチームは試合に勝つでしょう。", a: "will", d: ["can", "must", "may"] },
+  { s: "I ___ leave now.", ja: "私はもう行かなければなりません。", a: "must", d: ["can", "will", "may"] },
+  { s: "___ I sit here?", ja: "ここに座ってもいいですか。", a: "May", d: ["Must", "Will", "Do"] },
+  { s: "I don't know these English ___.", ja: "私はこれらの英単語を知りません。", a: "words", d: ["questions", "things", "problems"] },
+  { s: "She can speak four ___.", ja: "彼女は4つの言語を話せます。", a: "languages", d: ["words", "questions", "stories"] },
+  { s: "I wrote a letter in ___.", ja: "私は英語で手紙を書きました。", a: "English", d: ["Japanese", "language", "story"] },
+  { s: "He speaks very good ___.", ja: "彼はとても上手な日本語を話します。", a: "Japanese", d: ["English", "language", "word"] },
+  { s: "I want to try new ___ this year.", ja: "私は今年、新しいことに挑戦したいです。", a: "things", d: ["ideas", "jobs", "games"] },
+  { s: "She had a big ___.", ja: "彼女は大きな問題を抱えていました。", a: "problem", d: ["idea", "story", "event"] },
+  { s: "Do you have any ___ about this?", ja: "これについて何か質問はありますか。", a: "questions", d: ["ideas", "examples", "stories"] },
+  { s: "Could you tell me the ___ to the museum?", ja: "博物館への道を教えてくれますか。", a: "way", d: ["room", "city", "town"] },
+  { s: "It is the largest lake in the ___.", ja: "それは世界で最も大きい湖です。", a: "world", d: ["country", "city", "town"] },
+  { s: "Which ___ do you want to visit?", ja: "あなたはどの国を訪れたいですか。", a: "country", d: ["city", "town", "world"] },
+  { s: "He enjoys his country ___.", ja: "彼は田舎の生活を楽しんでいます。", a: "life", d: ["job", "story", "room"] },
+  { s: "Do you know that tall ___?", ja: "あなたはあの背の高い男の人を知っていますか。", a: "man", d: ["woman", "boy", "tourist"] },
+  { s: "Are these hats for ___?", ja: "これらの帽子は女性用ですか。", a: "women", d: ["men", "boys", "classmates"] },
+  { s: "He and I are in the same ___.", ja: "彼と私は同じクラスです。", a: "class", d: ["room", "town", "city"] },
+  { s: "They are my ___.", ja: "彼らは私のクラスメートです。", a: "classmates", d: ["friends", "teachers", "tourists"] },
+  { s: "In the evening, I watched a soccer ___ on TV.", ja: "夕方、私はテレビでサッカーの試合を見ました。", a: "game", d: ["event", "story", "idea"] },
+  { s: "That's a good ___.", ja: "それはいい考えです。", a: "idea", d: ["question", "problem", "story"] },
+  { s: "They are now waiting in the next ___.", ja: "彼らは今、となりの部屋で待っています。", a: "room", d: ["city", "town", "class"] },
+  { s: "He works in a big ___ in Canada.", ja: "彼はカナダの大都市で働いています。", a: "city", d: ["town", "country", "room"] },
+  { s: "He is from a small ___ in that country.", ja: "彼はその国の小さな町の出身です。", a: "town", d: ["city", "country", "world"] },
+  { s: "I'll give you an ___.", ja: "例を挙げましょう。", a: "example", d: ["idea", "story", "question"] },
+  { s: "He found a ___ in this town.", ja: "彼はこの町で仕事を見つけました。", a: "job", d: ["friend", "room", "way"] },
+  { s: "Music is an important ___ of my life.", ja: "音楽は私の人生の大切な一部です。", a: "part", d: ["way", "thing", "idea"] },
+  { s: "She told me an interesting ___.", ja: "彼女は私に面白い話をしてくれました。", a: "story", d: ["idea", "example", "problem"] },
+  { s: "It is the biggest ___ of the year.", ja: "それは1年でいちばん大きな行事です。", a: "event", d: ["game", "trip", "idea"] },
+  { s: "Let's go swimming in the ___.", ja: "川に泳ぎに行きましょう。", a: "river", d: ["lake", "sea", "pool"] },
+  { s: "You can play with fireworks by this ___.", ja: "この湖のそばで花火ができます。", a: "lake", d: ["river", "sea", "city"] },
+  { s: "How was your ___ to Kyoto?", ja: "京都への旅行はどうでしたか。", a: "trip", d: ["way", "event", "story"] },
+  { s: "Many ___ visit the town in winter.", ja: "冬に多くの観光客がその町を訪れます。", a: "tourists", d: ["people", "men", "women"] },
+  { s: "He sent me an ___ last night.", ja: "彼は昨夜、私にEメールを送ってきました。", a: "e-mail", d: ["idea", "example", "story"] },
+  { s: "I have tennis practice on Friday ___ every week.", ja: "私は毎週金曜の夕方にテニスの練習があります。", a: "evening", d: ["morning", "afternoon", "weekend"] },
+  { s: "The ___ was bad during the trip.", ja: "旅行中は天気が悪かったです。", a: "weather", d: ["idea", "game", "story"] },
+  { s: "The boy with the ___ cap is my brother.", ja: "緑の帽子をかぶった男の子は私の弟です。", a: "green", d: ["white", "red", "blue"] },
+  { s: "I bought a ___ T-shirt yesterday.", ja: "私は昨日、白いTシャツを買いました。", a: "white", d: ["black", "blue", "brown"] },
+  { s: "You must not write your names in ___ ink.", ja: "赤いインクで名前を書いてはいけません。", a: "red", d: ["blue", "black", "green"] },
+  { s: "I have a ___ dog.", ja: "私は黒い犬を飼っています。", a: "black", d: ["white", "brown", "blue"] },
+  { s: "She has beautiful ___ eyes.", ja: "彼女は美しい青い目をしています。", a: "blue", d: ["green", "brown", "black"] },
+  { s: "I want ___ shoes.", ja: "私は茶色の靴がほしいです。", a: "brown", d: ["black", "white", "blue"] },
+  { s: "I had ___ bread and soup.", ja: "私はいくらかのパンとスープを食べました。", a: "some", d: ["many", "every", "old"] },
+  { s: "There were ___ people at that festival.", ja: "その祭りには多くの人がいました。", a: "many", d: ["some", "every", "old"] }
   ]
  }
 };
