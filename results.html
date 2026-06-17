@@ -134,6 +134,7 @@
           <option value="1-50">1〜50（people〜house）</option>
           <option value="51-100">51〜100（wall〜check）</option>
           <option value="101-150">101〜150（ride〜vacation）</option>
+          <option value="151-200">151〜200（bread〜speak）</option>
         </select>
       </div>
     </div>
@@ -184,6 +185,7 @@ function rangeShort(r) {
   const rg = r.range || "1-50";
   if (rg === "51-100") return "51〜100";
   if (rg === "101-150") return "101〜150";
+  if (rg === "151-200") return "151〜200";
   return "1〜50";
 }
 

@@ -175,6 +175,7 @@
         <button class="range-opt selected" data-range="1-50">1〜50番<span class="small">people 〜 house</span></button>
         <button class="range-opt" data-range="51-100">51〜100番<span class="small">wall 〜 check</span></button>
         <button class="range-opt" data-range="101-150">101〜150番<span class="small">ride 〜 vacation</span></button>
+        <button class="range-opt" data-range="151-200">151〜200番<span class="small">bread 〜 speak</span></button>
       </div>
       <button class="btn btn-primary" id="btn-start">テストを始める</button>
       <a class="btn btn-gray" href="./results.html">📊 これまでの成績を見る</a>
@@ -389,6 +390,61 @@ const QUESTION_BANK = {
   { s: "We watched the ___ last night.", ja: "私たちは昨夜、花火を見ました。", a: "fireworks", d: ["stars", "movies", "games"] },
   { s: "My father goes to ___ at ten every night.", ja: "父は毎晩10時に寝ます。", a: "bed", d: ["work", "school", "home"] },
   { s: "I visited my friend in Toyama during summer ___.", ja: "私は夏休みに富山の友達を訪ねました。", a: "vacation", d: ["weekend", "festival", "morning"] }
+  ]
+ },
+ "151-200": {
+  label: "151〜200（bread〜speak）",
+  questions: [
+  { s: "I ate ___ for lunch.", ja: "私は昼食にパンを食べました。", a: "bread", d: ["soup", "salad", "pie"] },
+  { s: "She made an apple ___ for us.", ja: "彼女は私たちにアップルパイを作ってくれました。", a: "pie", d: ["juice", "bread", "salad"] },
+  { s: "Many tourists visit this ___.", ja: "多くの観光客がこの神社を訪れます。", a: "shrine", d: ["temple", "museum", "park"] },
+  { s: "There are a lot of ___ and shrines in this city.", ja: "この市にはたくさんの寺や神社があります。", a: "temples", d: ["stars", "parks", "museums"] },
+  { s: "He reads the student ___ every week.", ja: "彼は学生新聞を毎週読んでいます。", a: "newspaper", d: ["book", "letter", "story"] },
+  { s: "The ___ are very beautiful in winter.", ja: "冬は星がとても美しいです。", a: "stars", d: ["flowers", "fireworks", "lights"] },
+  { s: "A tomato ___ and two orange juices, please.", ja: "トマトジュースを1つとオレンジジュースを2つください。", a: "juice", d: ["soup", "salad", "tea"] },
+  { s: "He is making potato ___.", ja: "彼はポテトサラダを作っています。", a: "salad", d: ["soup", "juice", "bread"] },
+  { s: "They don't eat ___ with rice.", ja: "彼らはご飯と一緒に麺類を食べません。", a: "noodles", d: ["bread", "salad", "soup"] },
+  { s: "I ate corn ___ first.", ja: "私はまずコーンスープを飲みました。", a: "soup", d: ["salad", "juice", "bread"] },
+  { s: "Many students come to school by ___.", ja: "多くの生徒は自転車で通学しています。", a: "bicycle", d: ["bus", "jet", "train"] },
+  { s: "These are works by a famous ___.", ja: "これらは有名な芸術家による作品です。", a: "artist", d: ["hero", "teacher", "star"] },
+  { s: "I bought this ___ for my birthday.", ja: "私は誕生日にこの帽子を買いました。", a: "hat", d: ["shirt", "bag", "shoe"] },
+  { s: "Can I try on this ___?", ja: "このシャツを着てみてもいいですか。", a: "shirt", d: ["hat", "jacket", "shoe"] },
+  { s: "He is a ___ of the country.", ja: "彼はその国の英雄です。", a: "hero", d: ["artist", "star", "teacher"] },
+  { s: "There is a big ___ game in America next Sunday.", ja: "アメリカでは次の日曜日に大きなフットボールの試合があります。", a: "football", d: ["baseball", "soccer", "tennis"] },
+  { s: "He took a ___ to London.", ja: "彼はロンドンまでジェット機に乗りました。", a: "jet", d: ["bus", "bicycle", "train"] },
+  { s: "Close your ___.", ja: "目を閉じてください。", a: "eyes", d: ["ears", "hands", "mouths"] },
+  { s: "We ___ trains at Nagoya Station.", ja: "私たちは名古屋駅で電車を乗りかえました。", a: "changed", d: ["caught", "joined", "found"] },
+  { s: "My brother ___ me a cap.", ja: "兄は私に帽子をくれました。", a: "gave", d: ["sent", "brought", "showed"] },
+  { s: "She ___ them Japanese on weekends.", ja: "彼女は週末に彼らに日本語を教えています。", a: "teaches", d: ["tells", "shows", "sends"] },
+  { s: "I ___ him about my family.", ja: "私は彼に家族について話しました。", a: "told", d: ["showed", "taught", "sent"] },
+  { s: "He ___ me some pictures.", ja: "彼は私に数枚の写真を見せてくれました。", a: "showed", d: ["gave", "sent", "brought"] },
+  { s: "They ___ us some food.", ja: "彼らは私たちに食べ物を持ってきてくれました。", a: "brought", d: ["gave", "sent", "showed"] },
+  { s: "Where did you ___ my bag?", ja: "あなたはどこで私のかばんを見つけたのですか。", a: "find", d: ["catch", "hold", "meet"] },
+  { s: "On Saturday, we ___ with my grandparents.", ja: "土曜日に私たちは祖父母の家に泊まりました。", a: "stayed", d: ["arrived", "joined", "started"] },
+  { s: "When do you ___ happy?", ja: "あなたはいつ幸せだと感じますか。", a: "feel", d: ["sound", "become", "need"] },
+  { s: "___ you for your help.", ja: "手伝ってくれてありがとう。", a: "Thank", d: ["Tell", "Help", "Meet"] },
+  { s: "Which color did you ___?", ja: "あなたはどの色を選びましたか。", a: "choose", d: ["find", "send", "need"] },
+  { s: "This idea ___ good to me.", ja: "このアイディアは私にはよさそうに聞こえます。", a: "sounds", d: ["feels", "becomes", "needs"] },
+  { s: "I ___ the newspaper club.", ja: "私は新聞部に入りました。", a: "joined", d: ["started", "met", "followed"] },
+  { s: "I ___ her in the library.", ja: "私は彼女に図書館で会いました。", a: "met", d: ["found", "joined", "caught"] },
+  { s: "Children ___ very quickly.", ja: "子どもたちはとても速く成長します。", a: "grow", d: ["change", "start", "become"] },
+  { s: "He ___ at Hakata Station at five.", ja: "彼は5時に博多駅に到着しました。", a: "arrived", d: ["stayed", "started", "joined"] },
+  { s: "I ___ a letter to my friend in Canada.", ja: "私はカナダにいる友人に手紙を送りました。", a: "sent", d: ["gave", "brought", "showed"] },
+  { s: "What ___ to her?", ja: "彼女に何が起こったのですか。", a: "happened", d: ["arrived", "changed", "followed"] },
+  { s: "That dog is ___ us.", ja: "あの犬は私たちについてきます。", a: "following", d: ["meeting", "catching", "holding"] },
+  { s: "He was ___ a large box.", ja: "彼は大きな箱を抱えていました。", a: "holding", d: ["bringing", "sending", "catching"] },
+  { s: "He ___ in his chair.", ja: "彼はいすに座ってくつろぎました。", a: "relaxed", d: ["stayed", "started", "arrived"] },
+  { s: "They ___ at the dance festival last night.", ja: "彼らは昨夜ダンスフェスティバルで演技をしました。", a: "performed", d: ["joined", "started", "arrived"] },
+  { s: "He ___ your help.", ja: "彼はあなたの助けを必要としています。", a: "needs", d: ["gives", "holds", "brings"] },
+  { s: "The TV drama ___ at eight.", ja: "そのテレビドラマは8時に始まります。", a: "starts", d: ["arrives", "becomes", "follows"] },
+  { s: "She ___ a Japanese teacher.", ja: "彼女は日本語の教師になりました。", a: "became", d: ["started", "joined", "grew"] },
+  { s: "I ___ that you can join us.", ja: "私はあなたが私たちに加わってくれることを願っています。", a: "hope", d: ["feel", "need", "find"] },
+  { s: "He sometimes ___ about him.", ja: "彼はときどき彼のことを心配します。", a: "worries", d: ["thinks", "hopes", "feels"] },
+  { s: "He ___ the ball with one hand.", ja: "彼は片手でボールをつかまえました。", a: "caught", d: ["held", "found", "brought"] },
+  { s: "Please ___ the dishes on the table.", ja: "テーブルの上にお皿を置いてください。", a: "set", d: ["hold", "bring", "send"] },
+  { s: "We went ___ in Hokkaido last weekend.", ja: "私たちは先週末、北海道へスキーに行きました。", a: "skiing", d: ["skating", "swimming", "running"] },
+  { s: "I learned how to ___ from my father.", ja: "私は父からスケートのやり方を習いました。", a: "skate", d: ["ski", "swim", "dance"] },
+  { s: "Do they ___ English?", ja: "彼らは英語を話しますか。", a: "speak", d: ["tell", "teach", "say"] }
   ]
  }
 };
