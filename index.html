@@ -178,6 +178,7 @@
         <button class="range-opt" data-range="151-200">151〜200番<span class="small">bread 〜 speak</span></button>
         <button class="range-opt" data-range="201-250">201〜250番<span class="small">like 〜 many</span></button>
         <button class="range-opt" data-range="251-300">251〜300番<span class="small">every 〜 beach</span></button>
+        <button class="range-opt" data-range="301-350">301〜350番<span class="small">castle 〜 excited</span></button>
       </div>
       <button class="btn btn-primary" id="btn-start">テストを始める</button>
       <a class="btn btn-gray" href="./results.html">📊 これまでの成績を見る</a>
@@ -557,6 +558,61 @@ const QUESTION_BANK = {
   { s: "You can't leave your ___ here.", ja: "ここにごみを置いていってはいけません。", a: "garbage", d: ["cup", "clock", "phone"] },
   { s: "Their ___ was wonderful.", ja: "彼らの演技はすばらしかったです。", a: "performance", d: ["beach", "garbage", "cup"] },
   { s: "I cleaned the ___ with my classmates last Sunday.", ja: "私はこの前の日曜日にクラスメートと浜辺を掃除しました。", a: "beach", d: ["castle", "clock", "racket"] }
+  ]
+ },
+ "301-350": {
+  label: "301〜350（castle〜excited）",
+  questions: [
+  { s: "There is an old ___ near the lake.", ja: "湖の近くに古い城があります。", a: "castle", d: ["ship", "store", "drum"] },
+  { s: "He doesn't eat ___.", ja: "彼はチョコレートを食べません。", a: "chocolate", d: ["fish", "towel", "glove"] },
+  { s: "She bought a new tennis ___ yesterday.", ja: "彼女は昨日、新しいテニスのラケットを買いました。", a: "racket", d: ["bag", "ship", "drum"] },
+  { s: "That bird is standing on one ___.", ja: "あの鳥は片足で立っています。", a: "leg", d: ["ear", "mouth", "face"] },
+  { s: "The ___ opens at ten.", ja: "その店は10時に開きます。", a: "shop", d: ["castle", "drum", "towel"] },
+  { s: "What did you buy at the ___?", ja: "その店で何を買いましたか。", a: "store", d: ["leg", "ear", "drum"] },
+  { s: "I got this book at a ___ in Kanda.", ja: "私はこの本を神田の書店で買いました。", a: "bookstore", d: ["post office", "castle", "drum"] },
+  { s: "My family goes shopping at the ___ on Sundays.", ja: "私の家族は日曜日にスーパーマーケットに買い物に行きます。", a: "supermarket", d: ["bookstore", "post office", "castle"] },
+  { s: "Is there a ___ near here?", ja: "この近くに郵便局はありますか。", a: "post office", d: ["bookstore", "supermarket", "castle"] },
+  { s: "She plays the ___ in our band.", ja: "彼女は私たちのバンドでドラムを演奏します。", a: "drums", d: ["rackets", "fans", "gloves"] },
+  { s: "He opened his ___ to say a word.", ja: "彼は一言言おうと口を開けました。", a: "mouth", d: ["ear", "leg", "heart"] },
+  { s: "That rabbit has very long ___.", ja: "あのウサギはとても長い耳をしています。", a: "ears", d: ["legs", "mouths", "faces"] },
+  { s: "You have a kind ___.", ja: "あなたは優しい心の持ち主です。", a: "heart", d: ["face", "ear", "mouth"] },
+  { s: "In that ___, please call this number.", ja: "その場合は、こちらの番号に電話してください。", a: "case", d: ["place", "future", "name"] },
+  { s: "I will visit my ___ this Saturday.", ja: "私は今度の土曜日にいとこを訪ねます。", a: "cousin", d: ["photographer", "fan", "friend"] },
+  { s: "She is a big ___ of that player.", ja: "彼女はその選手の大ファンです。", a: "fan", d: ["cousin", "photographer", "friend"] },
+  { s: "Please use this new ___.", ja: "この新しいタオルを使ってください。", a: "towel", d: ["glove", "bag", "racket"] },
+  { s: "My mother works as a ___.", ja: "母は写真家として働いています。", a: "photographer", d: ["cousin", "fan", "teacher"] },
+  { s: "She put on her ___.", ja: "彼女は手袋をはめました。", a: "gloves", d: ["towels", "bags", "shoes"] },
+  { s: "I saw a ___ in the kitchen.", ja: "私は台所でネズミを見ました。", a: "mouse", d: ["fish", "fan", "drum"] },
+  { s: "Can you open the ___ for me?", ja: "ドアを開けてくれますか。", a: "door", d: ["bag", "case", "towel"] },
+  { s: "She showed her ___ for her family.", ja: "彼女は家族への愛を示しました。", a: "love", d: ["heart", "future", "name"] },
+  { s: "May I have your ___, please?", ja: "お名前をうかがってもよろしいですか。", a: "name", d: ["answer", "place", "case"] },
+  { s: "I caught three ___ in this river.", ja: "私はこの川で魚を3匹つかまえました。", a: "fish", d: ["drums", "bags", "towels"] },
+  { s: "He washed his ___ with cold water.", ja: "彼は冷たい水で顔を洗いました。", a: "face", d: ["leg", "heart", "ear"] },
+  { s: "I have some books in my ___.", ja: "私のかばんには何冊か本が入っています。", a: "bag", d: ["case", "towel", "glove"] },
+  { s: "The ___ to your question is \"yes.\"", ja: "あなたの質問への答えは「はい」です。", a: "answer", d: ["name", "place", "case"] },
+  { s: "This is a good ___ for reading.", ja: "ここは読書によい場所です。", a: "place", d: ["case", "answer", "future"] },
+  { s: "What do you want to be in the ___?", ja: "あなたは将来何になりたいですか。", a: "future", d: ["place", "case", "name"] },
+  { s: "We enjoyed lunch at the restaurant on the ___.", ja: "私たちは船の上のレストランで昼食を楽しみました。", a: "ship", d: ["castle", "beach", "store"] },
+  { s: "It will be ___ tomorrow.", ja: "明日は暑くなるでしょう。", a: "hot", d: ["cold", "rainy", "cloudy"] },
+  { s: "The water in the sea was very ___.", ja: "海の水はとても冷たかったです。", a: "cold", d: ["hot", "heavy", "light"] },
+  { s: "It was ___ yesterday.", ja: "昨日は雨降りでした。", a: "rainy", d: ["cloudy", "hot", "cold"] },
+  { s: "It's ___ and cold today.", ja: "今日は曇っていて寒いです。", a: "cloudy", d: ["rainy", "hot", "light"] },
+  { s: "They all had ___ faces.", ja: "彼らはみんな元気のいい顔をしていました。", a: "cheerful", d: ["cold", "heavy", "important"] },
+  { s: "This cat is big and ___.", ja: "このネコは大きくて重いです。", a: "heavy", d: ["light", "hot", "cold"] },
+  { s: "All these bags are really ___.", ja: "これらのかばんはどれも本当に軽いです。", a: "light", d: ["heavy", "hot", "cold"] },
+  { s: "There were ___ students in the classroom.", ja: "教室には生徒が1人もいませんでした。", a: "no", d: ["many", "some", "much"] },
+  { s: "Music is very ___ to me.", ja: "音楽は私にとってとても大切です。", a: "important", d: ["difficult", "easy", "popular"] },
+  { s: "Does this flower need ___ water?", ja: "この花はたくさんの水を必要としますか。", a: "much", d: ["many", "no", "some"] },
+  { s: "This question was ___ for some students.", ja: "この問題は何人かの生徒にとって難しかったです。", a: "difficult", d: ["easy", "important", "special"] },
+  { s: "Is there any ___ way to study English?", ja: "英語を勉強する簡単な方法はありますか。", a: "easy", d: ["difficult", "important", "popular"] },
+  { s: "Are you ___ about that?", ja: "そのことについて確信がありますか。", a: "sure", d: ["right", "easy", "funny"] },
+  { s: "Which of these is the ___ answer?", ja: "これらのうち正しい答えはどれですか。", a: "right", d: ["easy", "difficult", "popular"] },
+  { s: "This is the most ___ drink in the shop.", ja: "これはその店でいちばん人気のある飲み物です。", a: "popular", d: ["difficult", "special", "important"] },
+  { s: "I heard a ___ story from her.", ja: "私は彼女からおかしな話を聞きました。", a: "funny", d: ["difficult", "important", "popular"] },
+  { s: "That sounds ___ to me.", ja: "それは私には興味深く聞こえます。", a: "interesting", d: ["funny", "exciting", "popular"] },
+  { s: "I am ___ in table tennis.", ja: "私は卓球に興味があります。", a: "interested", d: ["excited", "exciting", "surprised"] },
+  { s: "The trip was the most ___ time of his life.", ja: "その旅行は彼の人生で最もわくわくする時間でした。", a: "exciting", d: ["interesting", "funny", "popular"] },
+  { s: "The tourists were really ___.", ja: "観光客たちは本当にわくわくしていました。", a: "excited", d: ["exciting", "interested", "surprised"] }
   ]
  }
 };
