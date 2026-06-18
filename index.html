@@ -177,6 +177,7 @@
         <button class="range-opt" data-range="101-150">101〜150番<span class="small">ride 〜 vacation</span></button>
         <button class="range-opt" data-range="151-200">151〜200番<span class="small">bread 〜 speak</span></button>
         <button class="range-opt" data-range="201-250">201〜250番<span class="small">like 〜 many</span></button>
+        <button class="range-opt" data-range="251-300">251〜300番<span class="small">every 〜 beach</span></button>
       </div>
       <button class="btn btn-primary" id="btn-start">テストを始める</button>
       <a class="btn btn-gray" href="./results.html">📊 これまでの成績を見る</a>
@@ -501,6 +502,61 @@ const QUESTION_BANK = {
   { s: "I want ___ shoes.", ja: "私は茶色の靴がほしいです。", a: "brown", d: ["black", "white", "blue"] },
   { s: "I had ___ bread and soup.", ja: "私はいくらかのパンとスープを食べました。", a: "some", d: ["many", "every", "old"] },
   { s: "There were ___ people at that festival.", ja: "その祭りには多くの人がいました。", a: "many", d: ["some", "every", "old"] }
+  ]
+ },
+ "251-300": {
+  label: "251〜300（every〜beach）",
+  questions: [
+  { s: "___ student in my class studies hard.", ja: "私のクラスのどの生徒もみんな一生懸命勉強します。", a: "Every", d: ["Some", "Any", "Other"] },
+  { s: "My father likes to watch ___ movies.", ja: "父は古い映画を見るのが好きです。", a: "old", d: ["new", "long", "sad"] },
+  { s: "Your bicycle looks ___.", ja: "あなたの自転車は新しそうに見えます。", a: "new", d: ["old", "big", "tall"] },
+  { s: "Are there any ___ problems?", ja: "ほかに何か問題はありますか。", a: "other", d: ["many", "busy", "hard"] },
+  { s: "Yours is ___ than mine.", ja: "あなたのものは私のものより大きいです。", a: "bigger", d: ["smaller", "longer", "shorter"] },
+  { s: "This shirt is too ___ for me.", ja: "このシャツは私には小さすぎます。", a: "small", d: ["big", "long", "tall"] },
+  { s: "He is the ___ player on the team.", ja: "彼はチームで一番背が高い選手です。", a: "tallest", d: ["biggest", "smallest", "greatest"] },
+  { s: "I had a ___ time at the party.", ja: "私はパーティーですばらしい時間を過ごしました。", a: "great", d: ["last", "short", "busy"] },
+  { s: "This is the ___ question.", ja: "これが最後の問題です。", a: "last", d: ["first", "other", "big"] },
+  { s: "What ___ weather!", ja: "なんていい天気でしょう！", a: "nice", d: ["sad", "busy", "tall"] },
+  { s: "She is a very ___ artist in that country.", ja: "彼女はその国でとても有名な芸術家です。", a: "famous", d: ["busy", "kind", "sad"] },
+  { s: "Are you ___ this evening?", ja: "今晩は忙しいですか。", a: "busy", d: ["tired", "happy", "sleepy"] },
+  { s: "I was very ___ after the trip.", ja: "旅行のあとはとても疲れていました。", a: "tired", d: ["busy", "hungry", "sleepy"] },
+  { s: "This apple pie looks ___.", ja: "このアップルパイはとてもおいしそうです。", a: "delicious", d: ["busy", "tired", "sad"] },
+  { s: "People in those countries often drink ___ green tea.", ja: "それらの国の人々はよく甘い緑茶を飲みます。", a: "sweet", d: ["kind", "sad", "tall"] },
+  { s: "Let's talk about it ___ time.", ja: "それについては別の時に話しましょう。", a: "another", d: ["last", "first", "every"] },
+  { s: "I read ___ the books here.", ja: "私はここにあるすべての本を読みました。", a: "all", d: ["some", "many", "every"] },
+  { s: "Do you have ___ good ideas?", ja: "何かいい考えはありますか。", a: "any", d: ["all", "every", "other"] },
+  { s: "They are practicing ___ Japanese dance.", ja: "彼らは伝統的な日本の踊りを練習しています。", a: "traditional", d: ["famous", "wonderful", "kind"] },
+  { s: "He was very ___ during the class.", ja: "彼は授業中とてもお腹がすいていました。", a: "hungry", d: ["sleepy", "tired", "sad"] },
+  { s: "I felt ___ and went to bed.", ja: "私は眠くなって寝ました。", a: "sleepy", d: ["hungry", "busy", "happy"] },
+  { s: "He lived there for a ___ time.", ja: "彼は長い間そこに住んでいました。", a: "long", d: ["short", "last", "busy"] },
+  { s: "She is now taking a ___ vacation.", ja: "彼女は今、短い休暇をとっています。", a: "short", d: ["long", "last", "busy"] },
+  { s: "She is always ___ to older people.", ja: "彼女はいつもお年寄りに親切です。", a: "kind", d: ["famous", "sad", "sleepy"] },
+  { s: "You look very ___ today.", ja: "あなたは今日とても幸せそうに見えます。", a: "happy", d: ["sad", "tired", "hungry"] },
+  { s: "This is a book of ___ stories about animals.", ja: "これは動物についての悲しい話の本です。", a: "sad", d: ["happy", "kind", "busy"] },
+  { s: "Thank you for the ___ dinner.", ja: "すばらしい夕食をありがとう。", a: "wonderful", d: ["traditional", "busy", "sad"] },
+  { s: "There are about two ___ books in this room.", ja: "この部屋には約200冊の本があります。", a: "hundred", d: ["many", "short", "kind"] },
+  { s: "They went to London and stayed ___ for a week.", ja: "彼らはロンドンに行き、そこに1週間滞在しました。", a: "there", d: ["here", "back", "now"] },
+  { s: "We arrived ___ three hours ago.", ja: "私たちは3時間前にここに着きました。", a: "here", d: ["there", "back", "now"] },
+  { s: "What time is it ___?", ja: "今何時ですか。", a: "now", d: ["here", "there", "yesterday"] },
+  { s: "They are ___ nice people.", ja: "彼らはとてもいい人たちです。", a: "very", d: ["always", "often", "sometimes"] },
+  { s: "I cleaned my brother's room, ___.", ja: "私は兄の部屋も掃除しました。", a: "too", d: ["now", "here", "back"] },
+  { s: "She ___ sends me e-mails.", ja: "彼女はよく私にメールを送ってきます。", a: "often", d: ["sometimes", "usually", "always"] },
+  { s: "I ___ see him in the school library.", ja: "私はときどき学校の図書館で彼を見かけます。", a: "sometimes", d: ["often", "usually", "always"] },
+  { s: "That was a ___ good game.", ja: "あれは本当にいい試合でした。", a: "really", d: ["always", "often", "sometimes"] },
+  { s: "___ listen to me.", ja: "どうぞ私の話を聞いてください。", a: "Please", d: ["Always", "Often", "Sometimes"] },
+  { s: "I ___ go to bed before eleven.", ja: "私はたいてい11時前に寝ます。", a: "usually", d: ["sometimes", "often", "always"] },
+  { s: "He left Japan ___.", ja: "彼は昨日、日本を発ちました。", a: "yesterday", d: ["now", "here", "there"] },
+  { s: "She is studying very ___ to become a doctor.", ja: "彼女は医者になるためにとても熱心に勉強しています。", a: "hard", d: ["often", "usually", "sometimes"] },
+  { s: "Are you hungry? — ___, I'm very hungry.", ja: "お腹すいてる？ — はい、とてもお腹がすいています。", a: "Yes", d: ["No", "Too", "Here"] },
+  { s: "I ___ buy this juice.", ja: "私はいつもこのジュースを買います。", a: "always", d: ["sometimes", "often", "usually"] },
+  { s: "I will come ___ at five.", ja: "私は5時に戻ってきます。", a: "back", d: ["here", "there", "now"] },
+  { s: "I always eat salad ___.", ja: "私はいつもサラダを最初に食べます。", a: "first", d: ["last", "now", "back"] },
+  { s: "Can you see the ___ on the wall?", ja: "壁の時計が見えますか。", a: "clock", d: ["phone", "cup", "picture"] },
+  { s: "She is talking to him on the ___.", ja: "彼女は電話で彼と話しています。", a: "phone", d: ["clock", "cup", "computer"] },
+  { s: "I have two ___ of coffee every morning.", ja: "私は毎朝コーヒーを2杯飲みます。", a: "cups", d: ["clocks", "phones", "rackets"] },
+  { s: "You can't leave your ___ here.", ja: "ここにごみを置いていってはいけません。", a: "garbage", d: ["cup", "clock", "phone"] },
+  { s: "Their ___ was wonderful.", ja: "彼らの演技はすばらしかったです。", a: "performance", d: ["beach", "garbage", "cup"] },
+  { s: "I cleaned the ___ with my classmates last Sunday.", ja: "私はこの前の日曜日にクラスメートと浜辺を掃除しました。", a: "beach", d: ["castle", "clock", "racket"] }
   ]
  }
 };
