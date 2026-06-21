@@ -179,6 +179,7 @@
         <button class="range-opt" data-range="201-250">201〜250番<span class="small">like 〜 many</span></button>
         <button class="range-opt" data-range="251-300">251〜300番<span class="small">every 〜 beach</span></button>
         <button class="range-opt" data-range="301-350">301〜350番<span class="small">castle 〜 excited</span></button>
+        <button class="range-opt" data-range="351-400">351〜400番<span class="small">surprised 〜 before</span></button>
       </div>
       <button class="btn btn-primary" id="btn-start">テストを始める</button>
       <a class="btn btn-gray" href="./results.html">📊 これまでの成績を見る</a>
@@ -613,6 +614,61 @@ const QUESTION_BANK = {
   { s: "I am ___ in table tennis.", ja: "私は卓球に興味があります。", a: "interested", d: ["excited", "exciting", "surprised"] },
   { s: "The trip was the most ___ time of his life.", ja: "その旅行は彼の人生で最もわくわくする時間でした。", a: "exciting", d: ["interesting", "funny", "popular"] },
   { s: "The tourists were really ___.", ja: "観光客たちは本当にわくわくしていました。", a: "excited", d: ["exciting", "interested", "surprised"] }
+  ]
+ },
+ "351-400": {
+  label: "351〜400（surprised〜before）",
+  questions: [
+  { s: "He was ___ to see me.", ja: "彼は私を見て驚きました。", a: "surprised", d: ["excited", "interested", "free"] },
+  { s: "We ate a ___ dinner last night.", ja: "私たちは昨夜、特別な夕食を食べました。", a: "special", d: ["local", "true", "useful"] },
+  { s: "Blue is my ___ color.", ja: "青は私の大好きな色です。", a: "favorite", d: ["cool", "true", "local"] },
+  { s: "Did you really finish your homework in ___ a short time?", ja: "本当にそんな短い時間で宿題を終えたのですか。", a: "such", d: ["too", "very", "more"] },
+  { s: "We enjoyed the ___ food there.", ja: "私たちはそこで地元の料理を楽しみました。", a: "local", d: ["special", "free", "useful"] },
+  { s: "This is a ___ story.", ja: "これは本当の話です。", a: "true", d: ["good", "local", "useful"] },
+  { s: "This book is very ___ for me.", ja: "この本は私にとても役立ちます。", a: "useful", d: ["free", "special", "local"] },
+  { s: "Takayama is the ___ city in Japan.", ja: "高山は日本でいちばん大きな市です。", a: "largest", d: ["highest", "longest", "oldest"] },
+  { s: "His new song is really ___.", ja: "彼の新曲は本当にかっこいいです。", a: "cool", d: ["free", "special", "true"] },
+  { s: "We are going to go fishing ___ Saturday.", ja: "私たちは次の土曜日に釣りに行く予定です。", a: "next", d: ["last", "free", "local"] },
+  { s: "That house has very ___ walls.", ja: "あの家にはとても高い壁があります。", a: "high", d: ["large", "good", "cool"] },
+  { s: "Are you ___ this afternoon?", ja: "あなたは今日の午後、ひまですか。", a: "free", d: ["good", "special", "true"] },
+  { s: "We had a ___ vacation.", ja: "私たちはよい休暇を過ごしました。", a: "good", d: ["free", "local", "special"] },
+  { s: "There is a ___ beach near that hotel.", ja: "そのホテルの近くに美しい浜辺があります。", a: "beautiful", d: ["large", "cool", "useful"] },
+  { s: "I feel happy on ___ days.", ja: "私は晴れた日には幸せな気持ちになります。", a: "sunny", d: ["good", "free", "cool"] },
+  { s: "Are your hands ___?", ja: "手はきれいですか。", a: "clean", d: ["free", "large", "useful"] },
+  { s: "I'll call you ___.", ja: "あとであなたに電話します。", a: "later", d: ["ago", "then", "abroad"] },
+  { s: "I played with him three days ___.", ja: "私は3日前に彼と遊びました。", a: "ago", d: ["later", "soon", "then"] },
+  { s: "Let's meet at nine ___.", ja: "明日9時に会いましょう。", a: "tomorrow", d: ["later", "soon", "then"] },
+  { s: "The bus will arrive here ___.", ja: "バスはまもなくここに着くでしょう。", a: "soon", d: ["later", "then", "abroad"] },
+  { s: "The city is two hours ___ from here by car.", ja: "その市はここから車で2時間離れています。", a: "away", d: ["abroad", "up", "down"] },
+  { s: "She is ___ studying in her room.", ja: "彼女はまだ部屋で勉強しています。", a: "still", d: ["soon", "later", "then"] },
+  { s: "He wants to study ___.", ja: "彼は外国で勉強したいと思っています。", a: "abroad", d: ["away", "together", "down"] },
+  { s: "My father leaves home at 7 ___.", ja: "父は午前7時に家を出ます。", a: "a.m.", d: ["p.m.", "then", "soon"] },
+  { s: "The concert starts at 3 ___.", ja: "コンサートは午後3時に始まります。", a: "p.m.", d: ["a.m.", "then", "later"] },
+  { s: "I was watching TV ___.", ja: "私はそのときテレビを見ていました。", a: "then", d: ["later", "soon", "ago"] },
+  { s: "We looked ___ at the sky.", ja: "私たちは空を見上げました。", a: "up", d: ["down", "away", "around"] },
+  { s: "He put the box ___ on the table.", ja: "彼は箱をテーブルの上に下ろしました。", a: "down", d: ["up", "away", "around"] },
+  { s: "We went to the festival ___.", ja: "私たちはいっしょに祭りに行きました。", a: "together", d: ["abroad", "away", "around"] },
+  { s: "I ___ wanted to talk to you.", ja: "私はただあなたと話したかっただけです。", a: "just", d: ["also", "still", "very"] },
+  { s: "He is a TV star and ___ a writer.", ja: "彼はテレビスターであり、また作家でもあります。", a: "also", d: ["just", "still", "very"] },
+  { s: "___ did you buy it?", ja: "あなたはどこでそれを買ったのですか。", a: "Where", d: ["When", "How", "Why"] },
+  { s: "___ will she come back?", ja: "彼女はいつ戻ってきますか。", a: "When", d: ["Where", "How", "Why"] },
+  { s: "___ did you get here?", ja: "あなたはどうやってここに来たのですか。", a: "How", d: ["Where", "When", "Why"] },
+  { s: "___ did you choose that book?", ja: "あなたはなぜその本を選んだのですか。", a: "Why", d: ["How", "When", "Where"] },
+  { s: "___ made this?", ja: "だれがこれを作ったのですか。", a: "Who", d: ["What", "Which", "Whose"] },
+  { s: "___ is your umbrella?", ja: "どれがあなたの傘ですか。", a: "Which", d: ["What", "Who", "Whose"] },
+  { s: "___ is in the box on the floor?", ja: "床の上の箱には何が入っていますか。", a: "What", d: ["Which", "Who", "Whose"] },
+  { s: "___ bag is this?", ja: "これはだれのかばんですか。", a: "Whose", d: ["Who", "Which", "What"] },
+  { s: "That was ___ of the most exciting games of the year.", ja: "あれはその年で最もわくわくする試合の1つでした。", a: "one", d: ["something", "anything", "everyone"] },
+  { s: "I want ___ cold to drink.", ja: "私は何か冷たい飲み物がほしいです。", a: "something", d: ["anything", "everyone", "one"] },
+  { s: "She doesn't know ___ about me.", ja: "彼女は私について何も知りません。", a: "anything", d: ["something", "everyone", "one"] },
+  { s: "___ wants to be happy.", ja: "だれもが幸せになりたいと思っています。", a: "Everyone", d: ["Anything", "Something", "One"] },
+  { s: "I ___ not answer some of those questions.", ja: "私はそれらの問題のいくつかに答えることができませんでした。", a: "could", d: ["would", "should", "must"] },
+  { s: "I thought you ___ help me.", ja: "私はあなたが手伝ってくれるだろうと思いました。", a: "would", d: ["could", "should", "will"] },
+  { s: "You ___ thank her for that.", ja: "あなたはそのことで彼女に感謝したほうがいいです。", a: "should", d: ["could", "would", "must"] },
+  { s: "My father works ___ a pianist.", ja: "父はピアニストとして働いています。", a: "as", d: ["after", "before", "around"] },
+  { s: "I walked ___ the park with my mother.", ja: "私は母と公園のまわりを歩きました。", a: "around", d: ["after", "before", "up"] },
+  { s: "I took a bath ___ my father.", ja: "私は父のあとにお風呂に入りました。", a: "after", d: ["before", "around", "as"] },
+  { s: "We had coffee ___ the show.", ja: "私たちはショーの前にコーヒーを飲みました。", a: "before", d: ["after", "around", "as"] }
   ]
  }
 };
