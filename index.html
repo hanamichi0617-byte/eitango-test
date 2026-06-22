@@ -180,6 +180,7 @@
         <button class="range-opt" data-range="251-300">251〜300番<span class="small">every 〜 beach</span></button>
         <button class="range-opt" data-range="301-350">301〜350番<span class="small">castle 〜 excited</span></button>
         <button class="range-opt" data-range="351-400">351〜400番<span class="small">surprised 〜 before</span></button>
+        <button class="range-opt" data-range="401-450">401〜450番<span class="small">parent 〜 comic book</span></button>
       </div>
       <button class="btn btn-primary" id="btn-start">テストを始める</button>
       <a class="btn btn-gray" href="./results.html">📊 これまでの成績を見る</a>
@@ -669,6 +670,61 @@ const QUESTION_BANK = {
   { s: "I walked ___ the park with my mother.", ja: "私は母と公園のまわりを歩きました。", a: "around", d: ["after", "before", "up"] },
   { s: "I took a bath ___ my father.", ja: "私は父のあとにお風呂に入りました。", a: "after", d: ["before", "around", "as"] },
   { s: "We had coffee ___ the show.", ja: "私たちはショーの前にコーヒーを飲みました。", a: "before", d: ["after", "around", "as"] }
+  ]
+ },
+ "401-450": {
+  label: "401〜450（parent〜comic book）",
+  questions: [
+  { s: "I went to the festival with my ___.", ja: "私は両親と祭りに行きました。", a: "parents", d: ["neighbors", "actors", "nurses"] },
+  { s: "Did you bring pencils and ___?", ja: "鉛筆と消しゴムを持ってきましたか。", a: "erasers", d: ["calendars", "cameras", "cookies"] },
+  { s: "She practices ___ four times a month.", ja: "彼女は月に4回、書道を練習します。", a: "calligraphy", d: ["surfing", "marathon", "speech"] },
+  { s: "The red ___ looks better than the green one.", ja: "赤いセーターのほうが緑のものより見栄えがいいです。", a: "sweater", d: ["camera", "calendar", "cookie"] },
+  { s: "Let's go to the ___ before the concert starts.", ja: "コンサートが始まる前にトイレに行きましょう。", a: "restroom", d: ["kitchen", "bedroom", "village"] },
+  { s: "We took a ___ to the next station.", ja: "私たちは隣の駅までタクシーに乗りました。", a: "taxi", d: ["bike", "car", "marathon"] },
+  { s: "I went to the bookstore to buy next year's ___.", ja: "私は来年のカレンダーを買いに書店に行きました。", a: "calendar", d: ["camera", "sweater", "eraser"] },
+  { s: "I had chocolate cake for ___.", ja: "私はデザートにチョコレートケーキを食べました。", a: "dessert", d: ["dollar", "prize", "fruit"] },
+  { s: "The cat is sitting on her ___.", ja: "ネコが彼女のひざの上に座っています。", a: "knees", d: ["noses", "fingers", "feet"] },
+  { s: "His ___ was red from the cold.", ja: "寒さで彼の鼻は赤くなっていました。", a: "nose", d: ["knee", "finger", "hair"] },
+  { s: "There was a ___ after the rain.", ja: "雨のあとに虹がかかっていました。", a: "rainbow", d: ["spring", "autumn", "nature"] },
+  { s: "He ran that ___ in five hours.", ja: "彼はそのマラソンを5時間で走りました。", a: "marathon", d: ["speech", "surfing", "calligraphy"] },
+  { s: "The new ___ opened yesterday.", ja: "新しい水族館が昨日オープンしました。", a: "aquarium", d: ["village", "kitchen", "restroom"] },
+  { s: "We usually go to the mountains in ___.", ja: "私たちはたいてい春に山へ行きます。", a: "spring", d: ["autumn", "rainbow", "nature"] },
+  { s: "They are going on a trip to Kyoto this ___.", ja: "彼らは今秋、京都へ旅行に行きます。", a: "autumn", d: ["spring", "marathon", "nature"] },
+  { s: "That beach is a good place for ___.", ja: "あの浜辺はサーフィンによい場所です。", a: "surfing", d: ["calligraphy", "marathon", "speech"] },
+  { s: "Skating with my friends was a lot of ___.", ja: "友達とスケートをするのはとても楽しかったです。", a: "fun", d: ["prize", "meaning", "voice"] },
+  { s: "He made a ___ at the party.", ja: "彼はパーティーでスピーチをしました。", a: "speech", d: ["prize", "hobby", "meaning"] },
+  { s: "Do not leave small children in the ___.", ja: "小さな子どもを車の中に残してはいけません。", a: "car", d: ["bike", "taxi", "kitchen"] },
+  { s: "Can we go there by ___?", ja: "私たちはそこへ自転車で行けますか。", a: "bike", d: ["car", "taxi", "marathon"] },
+  { s: "Our dog is sleeping on the ___.", ja: "うちの犬は床で眠っています。", a: "floor", d: ["gate", "kitchen", "bedroom"] },
+  { s: "We visited a small ___ near the mountains.", ja: "私たちは山の近くにある小さな村を訪れました。", a: "village", d: ["aquarium", "site", "kitchen"] },
+  { s: "There is a camping ___ near the lake.", ja: "湖の近くにキャンプ場があります。", a: "site", d: ["village", "gate", "floor"] },
+  { s: "I took these pictures with this ___.", ja: "私はこのカメラでこれらの写真を撮りました。", a: "camera", d: ["calendar", "sweater", "eraser"] },
+  { s: "Can you buy some ___ at the supermarket?", ja: "スーパーで果物を買ってきてくれますか。", a: "fruit", d: ["cookies", "dessert", "water"] },
+  { s: "I had 30 ___ with me then.", ja: "私はそのとき30ドル持っていました。", a: "dollars", d: ["prizes", "calendars", "cookies"] },
+  { s: "He became a ___ at that hospital.", ja: "彼はその病院の看護師になりました。", a: "nurse", d: ["actor", "neighbor", "volunteer"] },
+  { s: "I spoke to one of the ___ members.", ja: "私はスタッフの1人に話しかけました。", a: "staff", d: ["voice", "prize", "hobby"] },
+  { s: "Those cars were built by ___.", ja: "それらの車はロボットによって作られました。", a: "robots", d: ["actors", "nurses", "volunteers"] },
+  { s: "They keep some mice as ___.", ja: "彼らは数匹のネズミをペットとして飼っています。", a: "pets", d: ["prizes", "hobbies", "gates"] },
+  { s: "He won first ___ in the marathon.", ja: "彼はマラソン大会で優勝しました（1位の賞を取りました）。", a: "prize", d: ["voice", "meaning", "speech"] },
+  { s: "What is the ___ of this word?", ja: "この単語の意味は何ですか。", a: "meaning", d: ["voice", "prize", "speech"] },
+  { s: "She spoke to me in a small ___.", ja: "彼女は小さな声で私に話しかけました。", a: "voice", d: ["meaning", "speech", "prize"] },
+  { s: "He is making something in the ___.", ja: "彼は台所で何かを作っています。", a: "kitchen", d: ["bedroom", "restroom", "floor"] },
+  { s: "There are three ___ in their house.", ja: "彼らの家には寝室が3つあります。", a: "bedrooms", d: ["kitchens", "gates", "floors"] },
+  { s: "The ___ is closed on weekends.", ja: "その門は週末は閉まっています。", a: "gate", d: ["floor", "site", "kitchen"] },
+  { s: "All the ___ in that drama are famous.", ja: "そのドラマの俳優たちはみな有名です。", a: "actors", d: ["nurses", "neighbors", "volunteers"] },
+  { s: "I joined in the school ___.", ja: "私は学校の合唱団に入りました。", a: "chorus", d: ["hobby", "marathon", "speech"] },
+  { s: "Our new ___ brought some fruit to us.", ja: "新しい近所の人たちが私たちに果物を持ってきてくれました。", a: "neighbors", d: ["actors", "nurses", "parents"] },
+  { s: "It's five ___ below zero now.", ja: "今は氷点下5度です。", a: "degrees", d: ["dollars", "prizes", "fingers"] },
+  { s: "The man had short brown ___.", ja: "その男性は短い茶色の髪をしていました。", a: "hair", d: ["nose", "knee", "finger"] },
+  { s: "I ate curry with the ___ of my right hand.", ja: "私は右手の指でカレーを食べました。", a: "fingers", d: ["knees", "noses", "feet"] },
+  { s: "Did you come here on ___?", ja: "あなたはここに歩いて（徒歩で）来たのですか。", a: "foot", d: ["knee", "nose", "hair"] },
+  { s: "One of my ___ is playing tennis.", ja: "私の趣味の1つはテニスをすることです。", a: "hobbies", d: ["prizes", "voices", "speeches"] },
+  { s: "I gave her a box of ___.", ja: "私は彼女にクッキーを1箱あげました。", a: "cookies", d: ["erasers", "dollars", "fruits"] },
+  { s: "I drank a glass of ___ after my bath.", ja: "私はお風呂のあとにコップ1杯の水を飲みました。", a: "water", d: ["fruit", "dessert", "cookie"] },
+  { s: "You will feel the power of ___ there.", ja: "そこでは自然の力を感じるでしょう。", a: "nature", d: ["spring", "autumn", "rainbow"] },
+  { s: "We did ___ work during the summer vacation.", ja: "私たちは夏休みの間にボランティア活動をしました。", a: "volunteer", d: ["nurse", "actor", "neighbor"] },
+  { s: "I read the news on the ___.", ja: "私はインターネットでニュースを読みました。", a: "Internet", d: ["camera", "calendar", "voice"] },
+  { s: "The stories in the ___ are always exciting.", ja: "その漫画本のストーリーはいつもわくわくします。", a: "comic books", d: ["calendars", "cameras", "erasers"] }
   ]
  }
 };
