@@ -181,6 +181,7 @@
         <button class="range-opt" data-range="301-350">301〜350番<span class="small">castle 〜 excited</span></button>
         <button class="range-opt" data-range="351-400">351〜400番<span class="small">surprised 〜 before</span></button>
         <button class="range-opt" data-range="401-450">401〜450番<span class="small">parent 〜 comic book</span></button>
+        <button class="range-opt" data-range="451-500">451〜500番<span class="small">left 〜 salty（中2・3）</span></button>
       </div>
       <button class="btn btn-primary" id="btn-start">テストを始める</button>
       <a class="btn btn-gray" href="./results.html">📊 これまでの成績を見る</a>
@@ -725,6 +726,61 @@ const QUESTION_BANK = {
   { s: "We did ___ work during the summer vacation.", ja: "私たちは夏休みの間にボランティア活動をしました。", a: "volunteer", d: ["nurse", "actor", "neighbor"] },
   { s: "I read the news on the ___.", ja: "私はインターネットでニュースを読みました。", a: "Internet", d: ["camera", "calendar", "voice"] },
   { s: "The stories in the ___ are always exciting.", ja: "その漫画本のストーリーはいつもわくわくします。", a: "comic books", d: ["calendars", "cameras", "erasers"] }
+  ]
+ },
+ "451-500": {
+  label: "451〜500（left〜salty・LEVEL2）",
+  questions: [
+  { s: "You can see the lake on your ___.", ja: "左側に湖が見えますよ。", a: "left", d: ["front", "head", "second"] },
+  { s: "The game was a good ___ for the team.", ja: "その試合はチームにとってよい経験でした。", a: "experience", d: ["contest", "souvenir", "head"] },
+  { s: "I bought this T-shirt as a ___ of Osaka.", ja: "私はこのTシャツを大阪のおみやげとして買いました。", a: "souvenir", d: ["contest", "experience", "head"] },
+  { s: "She is waiting in ___ of the hotel.", ja: "彼女はホテルの前で待っています。", a: "front", d: ["left", "head", "second"] },
+  { s: "He put his hands on his ___.", ja: "彼は両手を頭にあてました。", a: "head", d: ["front", "ring", "left"] },
+  { s: "She won the speech ___ at her school.", ja: "彼女は学校のスピーチコンテストで優勝しました。", a: "contest", d: ["experience", "souvenir", "ring"] },
+  { s: "My house was ___ 30 years ago.", ja: "私の家は30年前に建てられました。", a: "built", d: ["ordered", "saved", "moved"] },
+  { s: "We ___ him John.", ja: "私たちは彼をジョンと呼びます。", a: "call", d: ["ask", "order", "guess"] },
+  { s: "I ___ her about her school life.", ja: "私は彼女に学校生活についてたずねました。", a: "asked", d: ["called", "ordered", "guessed"] },
+  { s: "They don't ___ Japanese.", ja: "彼らは日本語を理解しません。", a: "understand", d: ["believe", "explain", "guess"] },
+  { s: "He ___ to change jobs.", ja: "彼は仕事を変えることを決めました。", a: "decided", d: ["believed", "explained", "guessed"] },
+  { s: "I can't ___ such a story.", ja: "私はそんな話は信じられません。", a: "believe", d: ["understand", "explain", "decide"] },
+  { s: "___ me, which way is the station?", ja: "すみません、駅はどちらの方向ですか。", a: "Excuse", d: ["Ask", "Call", "Order"] },
+  { s: "I ___ he is about 30 years old.", ja: "彼は30歳くらいだと思います。", a: "guess", d: ["believe", "decide", "explain"] },
+  { s: "I ___ a sandwich and a coffee.", ja: "私はサンドイッチとコーヒーを注文しました。", a: "ordered", d: ["called", "asked", "saved"] },
+  { s: "You should think more before you ___.", ja: "あなたは行動する前にもっとよく考えたほうがいいです。", a: "act", d: ["move", "jog", "share"] },
+  { s: "She ___ at me.", ja: "彼女は私にほほえみました。", a: "smiled", d: ["chatted", "moved", "jogged"] },
+  { s: "I ___ how to use the computer.", ja: "私はそのコンピューターの使い方を説明しました。", a: "explained", d: ["understood", "decided", "guessed"] },
+  { s: "Your phone is ___.", ja: "あなたの電話が鳴っています。", a: "ringing", d: ["moving", "sleeping", "jogging"] },
+  { s: "He ___ for an hour every morning.", ja: "彼は毎朝1時間ジョギングをします。", a: "jogs", d: ["moves", "sleeps", "surfs"] },
+  { s: "We will ___ to Sendai next month.", ja: "私たちは来月、仙台に引っ越します。", a: "move", d: ["jog", "share", "save"] },
+  { s: "I usually ___ for eight hours every night.", ja: "私は毎晩たいてい8時間眠ります。", a: "sleep", d: ["jog", "move", "chat"] },
+  { s: "What should I ___ today?", ja: "今日は何を着ていこうかな。", a: "wear", d: ["build", "share", "brush"] },
+  { s: "He ___ a house with other people.", ja: "彼はほかの人たちと家を共有しています。", a: "shares", d: ["builds", "moves", "saves"] },
+  { s: "Doctors and nurses worked hard to ___ many lives.", ja: "医師と看護師たちは多くの命を救おうと懸命に働きました。", a: "save", d: ["feed", "share", "move"] },
+  { s: "She is ___ with her friends in the classroom.", ja: "彼女は教室で友達とおしゃべりをしています。", a: "chatting", d: ["sleeping", "jogging", "moving"] },
+  { s: "My father always ___ his shoes on Sundays.", ja: "父は日曜日にいつも靴をブラシでみがきます。", a: "brushes", d: ["feeds", "saves", "shares"] },
+  { s: "He ___ a bear in the mountains.", ja: "彼は山でクマを撃ちました。", a: "shot", d: ["fed", "built", "ordered"] },
+  { s: "He often ___ the Internet on the train.", ja: "彼は電車でよくインターネットを見ます。", a: "surfs", d: ["jogs", "moves", "chats"] },
+  { s: "You can't ___ animals in the zoo.", ja: "動物園で動物に食べ物を与えてはいけません。", a: "feed", d: ["save", "share", "brush"] },
+  { s: "I like the ___ song on her CD.", ja: "私は彼女のCDの2番目の曲が好きです。", a: "second", d: ["main", "early", "fresh"] },
+  { s: "About two ___ people ran the marathon.", ja: "約2,000人がそのマラソンを走りました。", a: "thousand", d: ["million", "hundred", "second"] },
+  { s: "About two ___ people live in that city.", ja: "その都市には約200万人が住んでいます。", a: "million", d: ["thousand", "hundred", "second"] },
+  { s: "I am ___ to see you.", ja: "あなたに会えてうれしいです。", a: "glad", d: ["sorry", "nervous", "serious"] },
+  { s: "I'm ___ to hear that.", ja: "それを聞いて気の毒に思います。", a: "sorry", d: ["glad", "nervous", "careful"] },
+  { s: "Be ___! The soup is very hot.", ja: "気をつけて！ スープはとても熱いですよ。", a: "careful", d: ["serious", "nervous", "fresh"] },
+  { s: "I was very ___ before my speech.", ja: "私はスピーチの前はとても緊張していました。", a: "nervous", d: ["glad", "serious", "careful"] },
+  { s: "That is her ___ hair color.", ja: "それが彼女の自然な髪の色です。", a: "natural", d: ["fresh", "fine", "soft"] },
+  { s: "How ___ that baby is!", ja: "あの赤ちゃんはなんてかわいいのでしょう！", a: "cute", d: ["fresh", "fine", "friendly"] },
+  { s: "That village has a ___ problem.", ja: "その村は深刻な問題を抱えています。", a: "serious", d: ["main", "fresh", "fine"] },
+  { s: "I bought ___ fish and eggs at that store.", ja: "私はその店で新鮮な魚と卵を買いました。", a: "fresh", d: ["salty", "sour", "bitter"] },
+  { s: "Some animals are ___ at night.", ja: "一部の動物は夜に活動的になります。", a: "active", d: ["friendly", "fine", "early"] },
+  { s: "We visited Okinawa in ___ June.", ja: "私たちは6月の初めに沖縄を訪れました。", a: "early", d: ["fresh", "second", "main"] },
+  { s: "I'm very ___, thank you.", ja: "私はとても元気です、ありがとう。", a: "fine", d: ["glad", "friendly", "warm"] },
+  { s: "The local people are warm and ___.", ja: "その地元の人たちは温かくて親しみやすいです。", a: "friendly", d: ["active", "cute", "fine"] },
+  { s: "That chocolate was sweet and ___.", ja: "そのチョコレートは甘くてやわらかかったです。", a: "soft", d: ["warm", "fresh", "salty"] },
+  { s: "This sweater is very ___.", ja: "このセーターはとても暖かいです。", a: "warm", d: ["soft", "fresh", "snowy"] },
+  { s: "January is usually ___ around here.", ja: "このあたりでは1月はたいてい雪が多いです。", a: "snowy", d: ["warm", "fine", "early"] },
+  { s: "I can't drink ___ coffee.", ja: "私は苦いコーヒーが飲めません。", a: "bitter", d: ["salty", "sour", "fresh"] },
+  { s: "The soup is too ___ for me.", ja: "そのスープは私には塩辛すぎます。", a: "salty", d: ["bitter", "sour", "fresh"] }
   ]
  }
 };
