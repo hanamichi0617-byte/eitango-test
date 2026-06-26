@@ -182,6 +182,7 @@
         <button class="range-opt" data-range="351-400">351〜400番<span class="small">surprised 〜 before</span></button>
         <button class="range-opt" data-range="401-450">401〜450番<span class="small">parent 〜 comic book</span></button>
         <button class="range-opt" data-range="451-500">451〜500番<span class="small">left 〜 salty（中2・3）</span></button>
+        <button class="range-opt" data-range="501-550">501〜550番<span class="small">sour 〜 court（中2・3）</span></button>
       </div>
       <button class="btn btn-primary" id="btn-start">テストを始める</button>
       <a class="btn btn-gray" href="./results.html">📊 これまでの成績を見る</a>
@@ -781,6 +782,61 @@ const QUESTION_BANK = {
   { s: "January is usually ___ around here.", ja: "このあたりでは1月はたいてい雪が多いです。", a: "snowy", d: ["warm", "fine", "early"] },
   { s: "I can't drink ___ coffee.", ja: "私は苦いコーヒーが飲めません。", a: "bitter", d: ["salty", "sour", "fresh"] },
   { s: "The soup is too ___ for me.", ja: "そのスープは私には塩辛すぎます。", a: "salty", d: ["bitter", "sour", "fresh"] }
+  ]
+ },
+ "501-550": {
+  label: "501〜550（sour〜court・LEVEL2）",
+  questions: [
+  { s: "Some of those apples were ___.", ja: "それらのリンゴのいくつかはすっぱかったです。", a: "sour", d: ["bitter", "salty", "fantastic"] },
+  { s: "We had really ___ weather in Nagano.", ja: "私たちは長野で本当にすばらしい天気に恵まれました。", a: "fantastic", d: ["unique", "main", "national"] },
+  { s: "He has a ___ way of thinking.", ja: "彼は独特な考え方をします。", a: "unique", d: ["main", "national", "fantastic"] },
+  { s: "She was too ___ to speak in front of others.", ja: "彼女は内気すぎて人の前で話せませんでした。", a: "shy", d: ["lonely", "dirty", "main"] },
+  { s: "He felt ___ when he moved here.", ja: "彼はここに引っ越してきたときさびしく感じました。", a: "lonely", d: ["shy", "dirty", "sour"] },
+  { s: "These mountains are part of a ___ park.", ja: "これらの山々は国立公園の一部です。", a: "national", d: ["main", "unique", "fantastic"] },
+  { s: "They didn't understand the ___ problem.", ja: "彼らは主要な問題を理解していませんでした。", a: "main", d: ["national", "unique", "dirty"] },
+  { s: "I don't want to sit on such a ___ floor.", ja: "私はそんな汚い床に座りたくありません。", a: "dirty", d: ["shy", "lonely", "sour"] },
+  { s: "The ___ studied the penguins.", ja: "その科学者たちはペンギンを研究しました。", a: "scientists", d: ["drivers", "managers", "passengers"] },
+  { s: "What is the ___ of this room now?", ja: "今、この部屋の温度は何度ですか。", a: "temperature", d: ["size", "situation", "sunrise"] },
+  { s: "Do you have a bigger ___?", ja: "もっと大きいサイズはありますか。", a: "size", d: ["temperature", "gift", "court"] },
+  { s: "We are in a difficult ___.", ja: "私たちは難しい状況にあります。", a: "situation", d: ["action", "mistake", "goal"] },
+  { s: "This is the oldest ___ in Japan.", ja: "これは日本でいちばん古い劇場です。", a: "theater", d: ["hotel", "bank", "café"] },
+  { s: "Many ___ are not open on weekends.", ja: "多くの銀行は週末は開いていません。", a: "banks", d: ["hotels", "theaters", "cafés"] },
+  { s: "The ___ in this store are all friendly.", ja: "この店の店員はみな親しみやすいです。", a: "clerks", d: ["drivers", "managers", "scientists"] },
+  { s: "We stayed at the ___ for a week.", ja: "私たちはそのホテルに1週間泊まりました。", a: "hotel", d: ["theater", "bank", "café"] },
+  { s: "I'd like to go ___ in Nara.", ja: "私は奈良に観光に行きたいです。", a: "sightseeing", d: ["cooking", "shopping", "fishing"] },
+  { s: "I wrote a ___ to my grandmother.", ja: "私は祖母に手紙を書きました。", a: "letter", d: ["novel", "gift", "comment"] },
+  { s: "He took ___ to change the situation.", ja: "彼は状況を変えるために行動を起こしました。", a: "action", d: ["situation", "goal", "mistake"] },
+  { s: "I usually do the ___ on Sunday mornings.", ja: "私はたいてい日曜日の朝に料理をします。", a: "cooking", d: ["sightseeing", "action", "cleaning"] },
+  { s: "She gave me gloves as a ___.", ja: "彼女は私に贈り物として手袋をくれました。", a: "gift", d: ["note", "letter", "comment"] },
+  { s: "I'll wear this ___ today.", ja: "今日はこのジャケットを着ます。", a: "jacket", d: ["shelf", "pot", "lantern"] },
+  { s: "Eat the soup in the ___ for lunch.", ja: "昼食になべの中のスープを食べてね。", a: "pot", d: ["shelf", "jacket", "net"] },
+  { s: "I put the box back on the ___.", ja: "私は箱を棚に戻しました。", a: "shelf", d: ["pot", "jacket", "court"] },
+  { s: "The coffee at that ___ is my favorite.", ja: "あのカフェのコーヒーは私のお気に入りです。", a: "café", d: ["hotel", "theater", "bank"] },
+  { s: "Please bring the ___ to this room.", ja: "この部屋のかぎを持ってきてください。", a: "key", d: ["note", "gift", "letter"] },
+  { s: "Those ___ turn yellow or red in autumn.", ja: "それらの葉は秋に黄色や赤になります。", a: "leaves", d: ["novels", "gifts", "notes"] },
+  { s: "Excuse me, where is the ___?", ja: "すみません、トイレはどこですか。", a: "bathroom", d: ["hotel", "theater", "café"] },
+  { s: "There are about 3,000 ___ on that ship.", ja: "あの船には約3,000人の乗客がいます。", a: "passengers", d: ["scientists", "drivers", "clerks"] },
+  { s: "The teacher gave us a ___ in today's class.", ja: "先生は今日の授業で私たちに小テストを出しました。", a: "quiz", d: ["novel", "comment", "note"] },
+  { s: "He showed me a new ___.", ja: "彼は私に新しい手品を見せてくれました。", a: "trick", d: ["novel", "quiz", "comedy"] },
+  { s: "His ___ are popular abroad, too.", ja: "彼の小説は海外でも人気があります。", a: "novels", d: ["letters", "comments", "quizzes"] },
+  { s: "We watched the ___ on the beach.", ja: "私たちは浜辺で日の出を見ました。", a: "sunrise", d: ["comedy", "symbol", "leaf"] },
+  { s: "This shelf is made of ___.", ja: "この棚は木材でできています。", a: "wood", d: ["rock", "leaf", "net"] },
+  { s: "He runs a large fruit ___.", ja: "彼は大きな果物農園を経営しています。", a: "farm", d: ["court", "hotel", "theater"] },
+  { s: "There are about 500 ___ on the farm.", ja: "その農場には約500頭の牛がいます。", a: "cows", d: ["leaves", "passengers", "scientists"] },
+  { s: "They became Japan's first World ___ Sites in 1993.", ja: "それらは1993年に日本初の世界遺産になりました。", a: "heritage", d: ["symbol", "situation", "goal"] },
+  { s: "I made some ___ on the math quiz.", ja: "私は数学の小テストでいくつか間違いをしました。", a: "mistakes", d: ["notes", "comments", "goals"] },
+  { s: "The ___ stopped the car near the theater.", ja: "その運転手は劇場の近くで車を止めました。", a: "driver", d: ["clerk", "manager", "scientist"] },
+  { s: "They went on a ___ of Spain.", ja: "彼らはスペインのツアーに出かけました。", a: "tour", d: ["sightseeing", "situation", "scene"] },
+  { s: "She is one of our ___.", ja: "彼女は私たちのチームメイトの1人です。", a: "teammates", d: ["managers", "drivers", "clerks"] },
+  { s: "My main ___ is to win the contest.", ja: "私のおもな目標は、コンテストで優勝することです。", a: "goal", d: ["action", "mistake", "note"] },
+  { s: "There is an old ___ on the shelf.", ja: "棚に古いランタンがあります。", a: "lantern", d: ["pot", "net", "symbol"] },
+  { s: "I left a ___ on the table for my father.", ja: "私は父のためにテーブルの上にメモを残しました。", a: "note", d: ["gift", "key", "comment"] },
+  { s: "I called the ___.", ja: "私は警察に電話しました。", a: "police", d: ["driver", "manager", "clerk"] },
+  { s: "Mt. Fuji is a ___ of our country.", ja: "富士山は私たちの国の象徴です。", a: "symbol", d: ["heritage", "situation", "goal"] },
+  { s: "The ship was on the ___.", ja: "その船は岩に乗り上げていました。", a: "rocks", d: ["leaves", "nets", "shelves"] },
+  { s: "I watched a ___ show on TV.", ja: "私はテレビでコメディー番組を見ました。", a: "comedy", d: ["novel", "action", "trick"] },
+  { s: "Do you have any ___ on that?", ja: "それについて何かコメントはありますか。", a: "comments", d: ["notes", "mistakes", "letters"] },
+  { s: "There are two tennis ___ in this park.", ja: "この公園にはテニスコートが2面あります。", a: "courts", d: ["goals", "nets", "farms"] }
   ]
  }
 };
